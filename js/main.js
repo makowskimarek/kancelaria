@@ -241,6 +241,13 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !specModal
 modalCtaBtn.addEventListener('click', closeSpecModal);
 
 /* =============================================
+   BLOG — staggered reveal
+   ============================================= */
+document.querySelectorAll('.blog-grid .blog-card').forEach((card, i) => {
+  card.dataset.delay = (i * 0.09).toFixed(2);
+});
+
+/* =============================================
    CONTACT FORM
    ============================================= */
 const form       = document.getElementById('contactForm');
