@@ -2,12 +2,11 @@
    KNS – kontakt.js
    ============================================= */
 
-const FORMSPREE_URL = 'https://formspree.io/f/FORMSPREE_ID';
+const API_URL = '/api/contact';
 
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
-
 
 hamburger.addEventListener('click', () => {
   const isOpen = navMenu.classList.toggle('open');
@@ -52,21 +51,34 @@ form.addEventListener('submit', async e => {
   setFormLoading(true);
   clearStatus();
 
+  const payload = {
+    name:    document.getElementById('cf-name').value.trim(),
+    email:   document.getElementById('cf-email').value.trim(),
+    phone:   document.getElementById('cf-phone').value.trim(),
+    topic:   document.getElementById('cf-topic').value,
+    message: document.getElementById('cf-message').value.trim(),
+    rodo:    document.getElementById('cf-rodo').checked,
+    _hp:     document.getElementById('cf-hp').value,
+  };
+
   try {
-    const res = await fetch(FORMSPREE_URL, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+    const res  = await fetch(API_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
     });
 
+    const body = await res.json().catch(() => ({}));
+
     if (res.ok) {
-      showStatus('Wiadomość wysłana. Skontaktujemy się z Państwem wkrótce.', 'success');
+      showSuccess();
       form.reset();
       clearErrors();
     } else {
-      const body = await res.json().catch(() => ({}));
-      const msg = body?.errors?.[0]?.message || 'Błąd serwera. Proszę spróbować ponownie.';
-      showStatus(msg, 'error');
+      const msg = body?.error
+        || Object.values(body?.errors ?? {})[0]
+        || 'Błąd serwera. Proszę spróbować ponownie.';
+      showStatus(String(msg), 'error');
     }
   } catch {
     showStatus('Brak połączenia. Proszę spróbować ponownie lub zadzwonić bezpośrednio.', 'error');
@@ -81,7 +93,9 @@ function validateForm() {
 
   const name    = document.getElementById('cf-name');
   const email   = document.getElementById('cf-email');
+  const topic   = document.getElementById('cf-topic');
   const message = document.getElementById('cf-message');
+  const rodo    = document.getElementById('cf-rodo');
 
   if (!name.value.trim()) {
     setError(name, 'nameError', 'Proszę podać imię i nazwisko.');
@@ -93,8 +107,18 @@ function validateForm() {
     ok = false;
   }
 
+  if (!topic.value) {
+    setError(topic, 'topicError', 'Proszę wybrać temat wiadomości.');
+    ok = false;
+  }
+
   if (message.value.trim().length < 10) {
     setError(message, 'messageError', 'Treść wiadomości musi mieć co najmniej 10 znaków.');
+    ok = false;
+  }
+
+  if (!rodo.checked) {
+    setError(rodo, 'rodoError', 'Wymagana jest zgoda na przetwarzanie danych osobowych.');
     ok = false;
   }
 
@@ -119,6 +143,15 @@ function setFormLoading(loading) {
 function showStatus(msg, type) {
   formStatus.textContent = msg;
   formStatus.className   = `form-status is-${type}`;
+  formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function showSuccess() {
+  formStatus.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-3px;margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg>
+    Wiadomość wysłana. Skontaktujemy się z Państwem wkrótce.
+  `;
+  formStatus.className = 'form-status is-success';
   formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 

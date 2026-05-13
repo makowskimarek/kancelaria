@@ -1,16 +1,20 @@
 .idea/
 .git/
 
+# Dependencies
+node_modules/
+keystatic-app/node_modules/
+blog-app/node_modules/
+
 # Next.js
 blog-app/.next/
 blog-app/out/
 keystatic-app/.next/
 
-# Dependencies
-node_modules/
-keystatic-app/node_modules/
-
 # Env files
+.env
+.env.local
+.dev.vars
 blog-app/.env
 blog-app/.env.local
 blog-app/.env*.local
@@ -18,5 +22,8 @@ keystatic-app/.env
 keystatic-app/.env.local
 keystatic-app/.env*.local
 
-# Vercel
+# Cloudflare
+.wrangler/
+
+# Vercel (legacy)
 .vercel/

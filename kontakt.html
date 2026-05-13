@@ -75,16 +75,42 @@
                 </div>
               </div>
               <div class="form-group">
+                <label for="cf-topic" class="form-label">Temat <span aria-hidden="true">*</span></label>
+                <select id="cf-topic" name="topic" class="form-input form-select" required>
+                  <option value="">— wybierz temat —</option>
+                  <option value="Prawo gospodarcze">Prawo gospodarcze</option>
+                  <option value="Prawo żywnościowe">Prawo żywnościowe</option>
+                  <option value="Pomoc konsumentom">Pomoc konsumentom (kredyty, roszczenia bankowe)</option>
+                  <option value="Prawo medyczne">Prawo medyczne</option>
+                  <option value="Odszkodowania i zadośćuczynienia">Odszkodowania i zadośćuczynienia</option>
+                  <option value="Stała obsługa prawna">Stała obsługa prawna</option>
+                  <option value="Inne">Inne</option>
+                </select>
+                <span class="form-error" id="topicError" role="alert"></span>
+              </div>
+              <div class="form-group">
                 <label for="cf-message" class="form-label">Treść wiadomości <span aria-hidden="true">*</span></label>
                 <textarea id="cf-message" name="message" class="form-textarea" rows="5" placeholder="Opisz krótko swoją sprawę..." required></textarea>
                 <span class="form-error" id="messageError" role="alert"></span>
+              </div>
+              <div class="form-group form-group--checkbox">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="cf-rodo" name="rodo" class="form-checkbox" required>
+                  <span class="form-checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez KNS Kancelaria Radców Prawnych w celu odpowiedzi na moje zapytanie, zgodnie z obowiązującymi przepisami o ochronie danych osobowych (RODO). <span aria-hidden="true">*</span></span>
+                </label>
+                <span class="form-error" id="rodoError" role="alert"></span>
+              </div>
+              <!-- Honeypot — ukryte przed użytkownikami, wypełniane przez boty -->
+              <div style="display:none" aria-hidden="true">
+                <label for="cf-hp">Nie wypełniaj tego pola</label>
+                <input type="text" id="cf-hp" name="_hp" tabindex="-1" autocomplete="off">
               </div>
               <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
               <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
                 <span class="btn__text">Wyślij wiadomość</span>
                 <svg class="btn__spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
               </button>
-              <p class="form-note">* Pola obowiązkowe. Dane osobowe przetwarzamy zgodnie z RODO.</p>
+              <p class="form-note">* Pola obowiązkowe.</p>
             </form>
           </div>
 
