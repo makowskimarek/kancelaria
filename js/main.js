@@ -235,10 +235,12 @@ function closeSpecModal() {
   }, 260);
 }
 
-modalClose.addEventListener('click', closeSpecModal);
-specModal.addEventListener('click', e => { if (e.target === specModal) closeSpecModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !specModal.hidden) closeSpecModal(); });
-modalCtaBtn.addEventListener('click', closeSpecModal);
+if (specModal) {
+  modalClose.addEventListener('click', closeSpecModal);
+  specModal.addEventListener('click', e => { if (e.target === specModal) closeSpecModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !specModal.hidden) closeSpecModal(); });
+  modalCtaBtn.addEventListener('click', closeSpecModal);
+}
 
 /* =============================================
    BLOG — staggered reveal

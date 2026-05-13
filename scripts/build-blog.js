@@ -1,4 +1,4 @@
-'use strict'
+﻿'use strict'
 const fs = require('fs')
 const path = require('path')
 const matter = require('gray-matter')
@@ -6,8 +6,6 @@ const { marked } = require('marked')
 
 const ROOT = path.join(__dirname, '..')
 const CONTENT_DIR = path.join(ROOT, 'content', 'blog')
-const BLOG_DIR = path.join(ROOT, 'blog')
-
 function extract(html, startMarker, endMarker) {
   const start = html.indexOf(startMarker)
   const end = html.indexOf(endMarker)
@@ -71,7 +69,7 @@ function buildBlogList(posts, navbar, footer) {
         </div>
         <h2 class="blog-card__title">${p.title}</h2>
         <p class="blog-card__excerpt">${p.excerpt}</p>
-        <a href="blog/${p.slug}.html" class="blog-card__btn">Czytaj więcej ${ARROW_RIGHT}</a>
+        <a href="blog/post.html?slug=${p.slug}" class="blog-card__btn">Czytaj więcej ${ARROW_RIGHT}</a>
       </article>`).join('\n')
 
   return `${HEAD('Artykuły', 'Komentarze prawne i praktyczne informacje o zmianach przepisów.', 'css/style.css')}
@@ -105,54 +103,6 @@ ${footer}
 </html>`
 }
 
-function buildPost(post, navbar, footer) {
-  const ctaTitle = post.ctaTitle ?? 'Potrzebujesz porady prawnej?'
-  const ctaText = post.ctaText ?? 'Skontaktuj się z nami — przeanalizujemy Twoją sytuację i pomożemy znaleźć najlepsze rozwiązanie prawne.'
-
-  return `${HEAD(post.title, post.excerpt, '../css/style.css')}
-
-${navbar}
-
-<main>
-  <div class="post-header">
-    <div class="container">
-      <a href="../blog.html" class="post-back">${ARROW_LEFT} Wszystkie artykuły</a>
-      <div class="post-header__meta">
-        <span class="blog-card__category">${post.category}</span>
-        <time class="blog-card__date">${formatDate(post.date)}</time>
-      </div>
-      <h1 class="post-header__title">${post.title}</h1>
-    </div>
-  </div>
-
-  <article class="post-body">
-    <div class="container post-body__inner">
-      ${post.html}
-    </div>
-  </article>
-
-  <section class="section-cta">
-    <div class="cta-split">
-      <div class="cta-split__image">
-        <img src="../img/AdobeStock_358263747.png" alt="Konsultacja prawna" loading="lazy">
-      </div>
-      <div class="cta-split__content">
-        <span class="section-label cta-split__label">Zaufaj ekspertom</span>
-        <h2 class="cta-split__title">${ctaTitle}</h2>
-        <p class="cta-split__text">${ctaText}</p>
-        <a href="../kontakt.html" class="btn btn--white btn--lg">Umów konsultację</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-${footer}
-
-<script src="../js/main.js"></script>
-</body>
-</html>`
-}
-
 function main() {
   const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8')
   const navbar = extract(indexHtml, '<!-- BLOG_NAV_START -->', '<!-- BLOG_NAV_END -->')
@@ -163,13 +113,6 @@ function main() {
 
   fs.writeFileSync(path.join(ROOT, 'blog.html'), buildBlogList(posts, navbar, footer), 'utf-8')
   console.log('Wygenerowano blog.html')
-
-  fs.mkdirSync(BLOG_DIR, { recursive: true })
-  for (const post of posts) {
-    const outPath = path.join(BLOG_DIR, `${post.slug}.html`)
-    fs.writeFileSync(outPath, buildPost(post, navbar, footer), 'utf-8')
-    console.log(`Wygenerowano blog/${post.slug}.html`)
-  }
 
   console.log('Build zakończony.')
 }
