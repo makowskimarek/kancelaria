@@ -250,11 +250,37 @@ if (specModal) {
 }
 
 /* =============================================
-   BLOG — staggered reveal
+   BLOG — dynamic cards from posts.json
    ============================================= */
-document.querySelectorAll('.blog-grid .blog-card').forEach((card, i) => {
-  card.dataset.delay = (i * 0.09).toFixed(2);
-});
+const blogGrid = document.getElementById('blogGrid');
+
+function formatPostDate(iso) {
+  return new Date(iso).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function blogCardHTML(p, i) {
+  const delay = (i * 0.09).toFixed(2);
+  const arrowSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  return `<article class="blog-card reveal" data-delay="${delay}">
+    <div class="blog-card__meta">
+      <span class="blog-card__category">${p.category}</span>
+      <time class="blog-card__date">${formatPostDate(p.date)}</time>
+    </div>
+    <h3 class="blog-card__title">${p.title}</h3>
+    <p class="blog-card__excerpt">${p.excerpt}</p>
+    <a href="blog/post.html?slug=${p.slug}" class="blog-card__btn">Czytaj więcej ${arrowSvg}</a>
+  </article>`;
+}
+
+if (blogGrid) {
+  fetch('content/blog/posts.json')
+    .then(r => r.json())
+    .then(posts => {
+      blogGrid.innerHTML = posts.slice(0, 4).map(blogCardHTML).join('');
+      blogGrid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    })
+    .catch(() => {});
+}
 
 /* =============================================
    CONTACT FORM

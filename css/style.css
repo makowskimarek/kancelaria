@@ -332,7 +332,9 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 1;
   padding-block: calc(var(--navbar-h) + 72px) 100px;
-  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero__eyebrow {
@@ -345,21 +347,11 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
 }
 
-.hero__title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  font-weight: 700;
-  color: white;
-  margin-bottom: 22px;
-  line-height: 1.13;
-}
-
-.hero__subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.13rem);
-  color: rgba(255, 255, 255, 0.72);
+.hero__logo-img {
+  max-width: clamp(432px, 72vw, 810px);
+  width: 100%;
+  height: auto;
   margin-bottom: 42px;
-  max-width: 520px;
-  line-height: 1.72;
 }
 
 .hero__actions {
@@ -553,6 +545,7 @@ section[id] {
 .card:hover .card__icon img {
   filter: brightness(0) invert(1);
 }
+
 
 /* =============================================
    TEAM
