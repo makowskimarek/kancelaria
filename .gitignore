@@ -1,2 +1,22 @@
 .idea/
 .git/
+
+# Next.js
+blog-app/.next/
+blog-app/out/
+keystatic-app/.next/
+
+# Dependencies
+blog-app/node_modules/
+keystatic-app/node_modules/
+
+# Env files
+blog-app/.env
+blog-app/.env.local
+blog-app/.env*.local
+keystatic-app/.env
+keystatic-app/.env.local
+keystatic-app/.env*.local
+
+# Vercel
+.vercel/
