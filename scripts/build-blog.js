@@ -108,6 +108,7 @@ function main() {
   const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8')
   const navbar = extract(indexHtml, '<!-- BLOG_NAV_START -->', '<!-- BLOG_NAV_END -->')
     .replace(/href="#/g, 'href="index.html#')
+    .replace('class="navbar"', 'class="navbar scrolled"')
   const footer = extract(indexHtml, '<!-- BLOG_FOOTER_START -->', '<!-- BLOG_FOOTER_END -->')
     .replace(/href="#/g, 'href="index.html#')
 
