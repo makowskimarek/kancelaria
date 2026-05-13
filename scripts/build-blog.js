@@ -78,6 +78,7 @@ ${navbar}
 
 <main>
   <div class="post-header post-header--hero">
+    <img src="articles.jpg" class="post-header__bg" alt="" aria-hidden="true">
     <div class="container">
       <a href="index.html" class="post-back">${ARROW_LEFT} Strona główna</a>
       <h1 class="post-header__title">Artykuły</h1>
