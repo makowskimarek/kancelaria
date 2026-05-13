@@ -141,6 +141,7 @@ h1, h2, h3, h4 {
   right: 0;
   z-index: 900;
   height: var(--navbar-h);
+  transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.35s, box-shadow 0.35s;
