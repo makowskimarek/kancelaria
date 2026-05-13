@@ -7,7 +7,7 @@ blog-app/out/
 keystatic-app/.next/
 
 # Dependencies
-blog-app/node_modules/
+node_modules/
 keystatic-app/node_modules/
 
 # Env files

@@ -4,7 +4,6 @@ export default config({
   storage: {
     kind: 'github',
     repo: { owner: 'makowskimarek', name: 'kancelaria' },
-    pathPrefix: 'blog-app',
   },
   ui: { brand: { name: 'KNS Blog' } },
   collections: {
