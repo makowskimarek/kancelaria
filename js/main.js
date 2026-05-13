@@ -19,6 +19,10 @@ const navMenu   = document.getElementById('navMenu');
 const onBlogPage = !!document.querySelector('.post-header');
 if (onBlogPage) navbar.classList.add('scrolled');
 
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  navbar.classList.remove('navbar--init');
+}));
+
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', onBlogPage || window.scrollY > 50);
 }, { passive: true });

@@ -144,6 +144,10 @@ h1, h2, h3, h4 {
   transition: background 0.35s, box-shadow 0.35s;
 }
 
+.navbar--init {
+  transition: none !important;
+}
+
 .navbar.scrolled {
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(14px);
