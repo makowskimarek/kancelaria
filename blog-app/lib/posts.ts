@@ -28,10 +28,10 @@ function formatDate(date: string): string {
 }
 
 export function getAllPosts(): PostMeta[] {
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'))
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md') || f.endsWith('.mdoc'))
   return files
     .map(file => {
-      const slug = file.replace(/\.md$/, '')
+      const slug = file.replace(/\.mdoc?$/, '')
       const raw = fs.readFileSync(path.join(contentDir, file), 'utf-8')
       const { data } = matter(raw)
       return {
@@ -48,7 +48,9 @@ export function getAllPosts(): PostMeta[] {
 }
 
 export function getPost(slug: string): Post {
-  const raw = fs.readFileSync(path.join(contentDir, `${slug}.md`), 'utf-8')
+  const mdocPath = path.join(contentDir, `${slug}.mdoc`)
+  const mdPath = path.join(contentDir, `${slug}.md`)
+  const raw = fs.readFileSync(fs.existsSync(mdocPath) ? mdocPath : mdPath, 'utf-8')
   const { data, content } = matter(raw)
   return {
     slug,
