@@ -1358,6 +1358,12 @@ section[id] {
   max-width: 800px;
 }
 
+.post-header:not(.post-header--hero) .post-header__meta,
+.post-header:not(.post-header--hero) .post-header__title {
+  max-width: 780px;
+  margin-inline: auto;
+}
+
 .post-body {
   padding-block: var(--section-pad);
 }
@@ -1740,6 +1746,12 @@ section[id] {
   color: var(--color-primary);
   line-height: 1.18;
   max-width: 800px;
+}
+
+.post-header:not(.post-header--hero) .post-header__meta,
+.post-header:not(.post-header--hero) .post-header__title {
+  max-width: 780px;
+  margin-inline: auto;
 }
 
 .post-body {
