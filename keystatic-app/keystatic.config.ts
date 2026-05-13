@@ -1,11 +1,13 @@
 import { config, fields, collection } from '@keystatic/core'
 
 export default config({
-  storage: {
-    kind: 'github',
-    repo: { owner: 'makowskimarek', name: 'kancelaria' },
-    pathPrefix: 'blog-app',
-  },
+  storage: process.env.KEYSTATIC_GITHUB_CLIENT_ID
+    ? {
+        kind: 'github',
+        repo: { owner: 'makowskimarek', name: 'kancelaria' },
+        pathPrefix: 'blog-app',
+      }
+    : { kind: 'local' },
   ui: { brand: { name: 'KNS Blog' } },
   collections: {
     blog: collection({
