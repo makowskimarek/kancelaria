@@ -16,8 +16,11 @@ const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 
+const onBlogPage = !!document.querySelector('.post-header');
+if (onBlogPage) navbar.classList.add('scrolled');
+
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  navbar.classList.toggle('scrolled', onBlogPage || window.scrollY > 50);
 }, { passive: true });
 
 /* =============================================
