@@ -1,6 +1,6 @@
 ---
 title: Nowy projekt ustawy o jawności wynagrodzeń
-date: '2026-11-05'
+date: 2026-11-05
 category: Prawo pracy
 excerpt: >-
   Projekt ustawy UC127 wdraża unijną dyrektywę 2023/970. Pracodawcy będą
@@ -8,11 +8,10 @@ excerpt: >-
   pracownikom dostępu do informacji o średnich płacach.
 ctaTitle: Przygotuj organizację na zmiany
 ctaText: >-
-  Pomożemy przeprowadzić audyt polityki wynagrodzeń i wdrożyć procedury zgodne
-  z nowymi przepisami, zanim staną się obowiązkowe.
+  Pomożemy przeprowadzić audyt polityki wynagrodzeń i wdrożyć procedury zgodne z
+  nowymi przepisami, zanim staną się obowiązkowe.
 ---
-
-Co nowa propozycja przepisów oznacza dla pracodawców i pracowników?
+## Co nowa propozycja przepisów oznacza dla pracodawców i pracowników?
 
 W ostatnich dniach na stronach Rządowego Centrum Legislacji procedowany jest projekt ustawy o wzmocnieniu stosowania prawa do jednakowego wynagrodzenia kobiet i mężczyzn za jednakową pracę lub pracę o jednakowej wartości. Projekt, oznaczony numerem UC127, ma wdrożyć do polskiego porządku prawnego dyrektywę Parlamentu Europejskiego i Rady (UE) 2023/970 dotyczącą przejrzystości wynagrodzeń. Z informacji opublikowanych przez RCL wynika, że projekt pozostaje otwarty, a jego dokumentacja była aktualizowana 4 maja 2026 r.
 
