@@ -19,7 +19,7 @@ export default config({
         excerpt:  fields.text({ label: 'Fragment', multiline: true }),
         ctaTitle: fields.text({ label: 'CTA — tytuł', validation: { isRequired: false } }),
         ctaText:  fields.text({ label: 'CTA — treść', multiline: true, validation: { isRequired: false } }),
-        content:  fields.markdoc({ label: 'Treść artykułu' }),
+        content:  fields.markdoc({ label: 'Treść artykułu', extension: 'md' }),
       },
     }),
   },
