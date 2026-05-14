@@ -11,9 +11,6 @@ Static single-page website for **KNS Kancelaria Radców Prawnych** (law firm in 
 No build step. To preview locally, open `index.html` in a browser or serve the directory:
 
 ```powershell
-# Python (if available)
-python -m http.server 8080
-
 # Node (if npx available)
 npx serve .
 ```

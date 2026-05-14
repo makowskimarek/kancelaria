@@ -30,7 +30,7 @@ function getAllPosts() {
       return {
         slug,
         title: String(data.title ?? ''),
-        date: String(data.date ?? ''),
+        date: data.date ? new Date(data.date).toISOString().slice(0, 10) : '',
         category: String(data.category ?? ''),
         excerpt: String(data.excerpt ?? ''),
         ctaTitle: data.ctaTitle ? String(data.ctaTitle) : null,
@@ -117,6 +117,10 @@ function main() {
 
   fs.writeFileSync(path.join(ROOT, 'blog.html'), buildBlogList(posts, navbar, footer), 'utf-8')
   console.log('Wygenerowano blog.html')
+
+  const postsJson = posts.map(({ slug, title, date, category, excerpt }) => ({ slug, title, date, category, excerpt }))
+  fs.writeFileSync(path.join(ROOT, 'content', 'blog', 'posts.json'), JSON.stringify(postsJson, null, 2) + '\n', 'utf-8')
+  console.log('Wygenerowano posts.json')
 
   console.log('Build zakończony.')
 }
