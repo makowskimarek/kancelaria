@@ -1,0 +1,20 @@
+{
+  "label": "KNS Kancelaria",
+  "collections": [
+    {
+      "name": "blog",
+      "label": "Artykuły",
+      "contentPath": "content/blog",
+      "slugField": "title",
+      "fields": [
+        { "name": "title", "type": "text", "label": "Tytuł" },
+        { "name": "date", "type": "date", "label": "Data publikacji" },
+        { "name": "category", "type": "text", "label": "Kategoria" },
+        { "name": "excerpt", "type": "textarea", "label": "Fragment" },
+        { "name": "ctaTitle", "type": "text", "label": "CTA – Nagłówek" },
+        { "name": "ctaText", "type": "textarea", "label": "CTA – Treść" },
+        { "name": "content", "type": "markdown", "label": "Treść artykułu" }
+      ]
+    }
+  ]
+}
