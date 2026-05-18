@@ -1,6 +1,6 @@
 ---
 title: Nowy projekt ustawy o jawności wynagrodzeń
-date: 2026-12-05
+date: 2026-11-05
 category: Prawo pracy
 excerpt: >-
   Projekt ustawy UC127 wdraża unijną dyrektywę 2023/970. Pracodawcy będą
