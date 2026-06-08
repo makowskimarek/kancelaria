@@ -34,8 +34,8 @@ abbr { cursor: help; }
 
 /* === CSS CUSTOM PROPERTIES === */
 :root {
-  --color-primary:      #1A3A5C;
-  --color-primary-dark: #0E2236;
+  --color-primary:      #1868b1;
+  --color-primary-dark: #0d4485;
   --color-accent:       #2E6DA4;
   --color-accent-hover: #245991;
   --color-bg:           #FFFFFF;
@@ -392,6 +392,15 @@ section[id] {
 
 .section--alt {
   background: var(--color-bg-alt);
+}
+
+.section--dark {
+  background: var(--color-primary);
+  padding-block: clamp(38px, 5.4vw, 65px);
+}
+
+.section--dark .section-title {
+  color: #fff;
 }
 
 .section-header {
@@ -926,20 +935,36 @@ section[id] {
    ============================================= */
 .partners-wrap {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 80px;
   padding: 16px 0;
 }
 
-.partners-logos-img {
-  max-width: 520px;
-  width: 100%;
-  height: auto;
-  opacity: 0.65;
-  transition: opacity 0.3s;
+.partner-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.partners-logos-img:hover { opacity: 1; }
+.partner-logo-img {
+  height: 140px;
+  width: auto;
+  max-width: 360px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(190deg) brightness(0.38);
+}
+
+.partner-logo-img--fixed-w {
+  width: 200px;
+  height: auto;
+  max-width: none;
+}
+
+.partner-logo-img--epione {
+  height: 193px;
+}
 
 /* =============================================
    CONTACT

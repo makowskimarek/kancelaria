@@ -3,11 +3,11 @@
    main.js
    ============================================= */
 
-/* --- Formspree endpoint ---
-   Zarejestruj się na formspree.io i zastąp
-   FORMSPREE_ID swoim identyfikatorem formularza.
-   -------------------------------------------- */
-const FORMSPREE_URL = 'https://formspree.io/f/FORMSPREE_ID';
+/* --- Endpoint formularza kontaktowego (Vercel Function) ---
+   Po deploymencie keystatic-app na Vercel zastąp VERCEL_URL
+   adresem projektu, np. kns-keystatic.vercel.app
+   --------------------------------------------------------- */
+const CONTACT_URL = 'https://kns-green.vercel.app/api/contact';
 
 /* =============================================
    NAVBAR — scroll effect
@@ -299,20 +299,28 @@ if (form) {
     clearStatus();
 
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch(CONTACT_URL, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:    document.getElementById('cf-name').value.trim(),
+          email:   document.getElementById('cf-email').value.trim(),
+          phone:   document.getElementById('cf-phone').value.trim(),
+          topic:   document.getElementById('cf-topic').value,
+          message: document.getElementById('cf-message').value.trim(),
+          rodo:    document.getElementById('cf-rodo').checked,
+          _hp:     document.getElementById('cf-hp').value,
+        }),
       });
 
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
         showStatus('Wiadomość wysłana. Skontaktujemy się z Państwem wkrótce.', 'success');
         form.reset();
         clearErrors();
       } else {
-        const body = await res.json().catch(() => ({}));
-        const msg = body?.errors?.[0]?.message || 'Błąd serwera. Proszę spróbować ponownie.';
-        showStatus(msg, 'error');
+        showStatus(data.error || 'Błąd serwera. Proszę spróbować ponownie.', 'error');
       }
     } catch {
       showStatus('Brak połączenia. Proszę spróbować ponownie lub zadzwonić bezpośrednio.', 'error');
