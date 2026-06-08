@@ -34,8 +34,8 @@ abbr { cursor: help; }
 
 /* === CSS CUSTOM PROPERTIES === */
 :root {
-  --color-primary:      #1868b1;
-  --color-primary-dark: #0d4485;
+  --color-primary:      #1A3A5C;
+  --color-primary-dark: #0E2236;
   --color-accent:       #2E6DA4;
   --color-accent-hover: #245991;
   --color-bg:           #FFFFFF;

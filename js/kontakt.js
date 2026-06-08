@@ -2,7 +2,7 @@
    KNS – kontakt.js
    ============================================= */
 
-const API_URL = 'https://kns-green.vercel.app/api/contact';
+const API_URL = 'https://kancelaria-bu3.pages.dev/api/contact';
 
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
