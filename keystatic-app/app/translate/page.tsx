@@ -107,6 +107,18 @@ export default function TranslatePage() {
                 {post.hasEn ? 'EN ✓' : 'brak EN'}
               </span>
 
+              <a
+                href={`/keystatic/branch/master/collection/blog/${post.slug}`}
+                style={{
+                  flexShrink: 0, padding: '7px 14px', borderRadius: 7,
+                  background: '#f3f4f6', color: '#374151',
+                  fontSize: 13, fontWeight: 500, textDecoration: 'none',
+                  border: '1px solid #e5e7eb', whiteSpace: 'nowrap',
+                }}
+              >
+                Edytuj
+              </a>
+
               <button
                 onClick={() => translate(post.slug)}
                 disabled={status === 'translating'}
