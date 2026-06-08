@@ -6,6 +6,9 @@ import { Redis } from '@upstash/redis';
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '';
 
 function getRatelimit() {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
   return new Ratelimit({
     redis: Redis.fromEnv(),
     limiter: Ratelimit.slidingWindow(5, '1 h'),
@@ -37,12 +40,15 @@ export async function POST(req: NextRequest) {
 
   // rate limiting — max 5 wysłań na godzinę per IP
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '127.0.0.1';
-  const { success } = await getRatelimit().limit(ip);
-  if (!success) {
-    return NextResponse.json(
-      { error: 'Zbyt wiele prób. Proszę spróbować za godzinę lub zadzwonić bezpośrednio.' },
-      { status: 429, headers }
-    );
+  const ratelimit = getRatelimit();
+  if (ratelimit) {
+    const { success } = await ratelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Zbyt wiele prób. Proszę spróbować za godzinę lub zadzwonić bezpośrednio.' },
+        { status: 429, headers }
+      );
+    }
   }
 
   let body: Record<string, string>;
