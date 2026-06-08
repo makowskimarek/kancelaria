@@ -6,11 +6,11 @@ import { Redis } from '@upstash/redis';
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '';
 
 function getRatelimit() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
+  const url   = process.env.UPSTASH_REDIS_REST_URL   ?? process.env.kancelaria_KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.kancelaria_KV_REST_API_TOKEN;
+  if (!url || !token) return null;
   return new Ratelimit({
-    redis: Redis.fromEnv(),
+    redis: new Redis({ url, token }),
     limiter: Ratelimit.slidingWindow(5, '1 h'),
     prefix: 'kns:contact',
   });
