@@ -52,7 +52,7 @@ function TranslateOverlay() {
       onClick={translate}
       disabled={status === 'loading'}
       style={{
-        position: 'fixed', top: 16, left: 16, zIndex: 9999,
+        position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
         padding: '10px 18px', borderRadius: 8, border: 'none',
         background: bg[status], color: '#fff',
         fontSize: 13, fontWeight: 600,
