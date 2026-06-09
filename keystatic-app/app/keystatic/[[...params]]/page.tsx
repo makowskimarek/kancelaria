@@ -19,6 +19,7 @@ function TranslateOverlay() {
   if (!slug) return null
 
   async function translate() {
+    if (!window.confirm('Tłumaczenie nadpisze wersję EN.\nUpewnij się, że zapisałeś zmiany w tym wpisie — niezapisane zostaną utracone.')) return
     setStatus('loading')
     try {
       const res = await fetch('/api/translate', {
