@@ -12,7 +12,7 @@ function TranslateOverlay() {
   const pathname = usePathname()
   const [status, setStatus] = useState<Status>('idle')
 
-  const match = pathname?.match(/\/keystatic\/.*\/collection\/blog\/([^/]+)$/)
+  const match = pathname?.match(/\/keystatic\/.*\/collection\/blog\/item\/([^/]+)$/)
   const slug = match?.[1]
 
   if (!slug) return null
