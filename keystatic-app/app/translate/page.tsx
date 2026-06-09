@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Nav from '../components/Nav'
 
 type Post = { slug: string; title: string; date: string; hasEn: boolean }
 type Status = 'idle' | 'translating' | 'ok' | 'error'
@@ -58,10 +59,11 @@ export default function TranslatePage() {
   }
 
   return (
-    <main style={{ fontFamily: 'system-ui, sans-serif', maxWidth: 720, margin: '48px auto', padding: '0 24px' }}>
+    <>
+    <Nav />
+    <main style={{ fontFamily: 'system-ui, sans-serif', maxWidth: 720, margin: '32px auto', padding: '0 24px' }}>
       <div style={{ marginBottom: 32 }}>
-        <a href="/keystatic" style={{ fontSize: 13, color: '#6b7280', textDecoration: 'none' }}>← Keystatic</a>
-        <h1 style={{ fontSize: 22, fontWeight: 700, margin: '12px 0 4px' }}>Tłumaczenie wpisów PL → EN</h1>
+        <h1 style={{ fontSize: 22, fontWeight: 700, margin: '0 0 4px' }}>Tłumaczenie wpisów PL → EN</h1>
         <p style={{ color: '#6b7280', fontSize: 14, margin: 0 }}>
           DeepL tłumaczy frontmatter i treść. Wynik trafia do <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: 4 }}>content/blog/en/</code> jako commit na GitHubie.
         </p>
@@ -116,7 +118,19 @@ export default function TranslatePage() {
                   border: '1px solid #e5e7eb', whiteSpace: 'nowrap',
                 }}
               >
-                Edytuj
+                Edytuj PL
+              </a>
+
+              <a
+                href={`/edit/${post.slug}`}
+                style={{
+                  flexShrink: 0, padding: '7px 14px', borderRadius: 7,
+                  background: '#eff6ff', color: '#1d4ed8',
+                  fontSize: 13, fontWeight: 500, textDecoration: 'none',
+                  border: '1px solid #bfdbfe', whiteSpace: 'nowrap',
+                }}
+              >
+                Edytuj EN
               </a>
 
               <button
@@ -137,5 +151,6 @@ export default function TranslatePage() {
         })}
       </ul>
     </main>
+    </>
   )
 }
