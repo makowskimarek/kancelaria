@@ -1,7 +1,7 @@
 'use client'
 import { makePage } from '@keystatic/next/ui/app'
 import keystaticConfig from '../../../keystatic.config'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 const KeystaticApp = makePage(keystaticConfig)
@@ -10,6 +10,7 @@ type Status = 'idle' | 'loading' | 'ok' | 'error'
 
 function TranslateOverlay() {
   const pathname = usePathname()
+  const router = useRouter()
   const [status, setStatus] = useState<Status>('idle')
 
   const match = pathname?.match(/\/keystatic\/.*\/collection\/blog\/item\/([^/]+)$/)
@@ -26,11 +27,19 @@ function TranslateOverlay() {
         body: JSON.stringify({ slug }),
       })
       const data = await res.json()
-      setStatus(data.ok ? 'ok' : 'error')
+      if (data.ok) {
+        setStatus('ok')
+        setTimeout(() => {
+          router.push(`/keystatic/branch/master/collection/blogEn/item/${slug}`)
+        }, 1200)
+      } else {
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 3000)
+      }
     } catch {
       setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
     }
-    setTimeout(() => setStatus('idle'), 3000)
   }
 
   const label: Record<Status, string> = {
