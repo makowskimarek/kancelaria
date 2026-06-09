@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 
 const REPO = 'makowskimarek/kancelaria'
 const GH_API = 'https://api.github.com'
@@ -6,10 +7,21 @@ const DEEPL_API = process.env.DEEPL_API_URL ?? 'https://api-free.deepl.com/v2/tr
 
 type GHFile = { name: string; sha: string; content: string }
 
+function getGhToken(): string {
+  const cookieStore = cookies()
+  const allCookies = cookieStore.getAll().map(c => c.name)
+  const fromCookie = cookieStore.get('keystatic-gh-access-token')?.value
+  const token = fromCookie ?? process.env.GITHUB_TOKEN
+  console.log('[translate] cookies present:', allCookies.join(', ') || 'BRAK')
+  console.log('[translate] token source:', fromCookie ? `cookie (${fromCookie.slice(0, 8)}…)` : process.env.GITHUB_TOKEN ? `env (${process.env.GITHUB_TOKEN.slice(0, 8)}…)` : 'BRAK')
+  if (!token) throw new Error('Brak tokenu GitHub — zaloguj się przez Keystatic lub ustaw GITHUB_TOKEN')
+  return token
+}
+
 async function ghGet(path: string) {
   const res = await fetch(`${GH_API}/repos/${REPO}/contents/${path}`, {
     headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Authorization: `Bearer ${getGhToken()}`,
       Accept: 'application/vnd.github+json',
     },
     cache: 'no-store',
@@ -28,7 +40,7 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
   const res = await fetch(`${GH_API}/repos/${REPO}/contents/${path}`, {
     method: 'PUT',
     headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Authorization: `Bearer ${getGhToken()}`,
       Accept: 'application/vnd.github+json',
       'Content-Type': 'application/json',
     },
