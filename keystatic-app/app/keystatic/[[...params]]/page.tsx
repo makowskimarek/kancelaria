@@ -29,9 +29,6 @@ function TranslateOverlay() {
       const data = await res.json()
       if (data.ok) {
         setStatus('ok')
-        setTimeout(() => {
-          router.push(`/keystatic/branch/master/collection/blogEn/item/${slug}`)
-        }, 1200)
       } else {
         setStatus('error')
         setTimeout(() => setStatus('idle'), 3000)
@@ -42,18 +39,35 @@ function TranslateOverlay() {
     }
   }
 
-  const label: Record<Status, string> = {
-    idle: 'Przetłumacz PL→EN',
-    loading: 'Tłumaczę…',
-    ok: 'Gotowe ✓',
-    error: 'Błąd — spróbuj ponownie',
+  const enUrl = `/keystatic/branch/master/collection/blogEn/item/${slug}`
+
+  const base: React.CSSProperties = {
+    position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
+    padding: '10px 18px', borderRadius: 8, border: 'none',
+    fontSize: 13, fontWeight: 600,
+    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+    transition: 'background 0.2s',
+    textDecoration: 'none', display: 'inline-block',
   }
 
-  const bg: Record<Status, string> = {
+  if (status === 'ok') {
+    return (
+      <a href={enUrl} style={{ ...base, background: '#059669', color: '#fff', cursor: 'pointer' }}>
+        Otwórz EN →
+      </a>
+    )
+  }
+
+  const bg: Record<Exclude<Status, 'ok'>, string> = {
     idle: '#1d4ed8',
     loading: '#6b7280',
-    ok: '#059669',
     error: '#dc2626',
+  }
+
+  const label: Record<Exclude<Status, 'ok'>, string> = {
+    idle: 'Przetłumacz PL→EN',
+    loading: 'Tłumaczę…',
+    error: 'Błąd — spróbuj ponownie',
   }
 
   return (
@@ -61,17 +75,13 @@ function TranslateOverlay() {
       onClick={translate}
       disabled={status === 'loading'}
       style={{
-        position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
-        padding: '10px 18px', borderRadius: 8, border: 'none',
-        background: bg[status], color: '#fff',
-        fontSize: 13, fontWeight: 600,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+        ...base,
+        background: bg[status as Exclude<Status, 'ok'>], color: '#fff',
         cursor: status === 'loading' ? 'wait' : 'pointer',
-        transition: 'background 0.2s',
         opacity: status === 'loading' ? 0.75 : 1,
       }}
     >
-      {label[status]}
+      {label[status as Exclude<Status, 'ok'>]}
     </button>
   )
 }
