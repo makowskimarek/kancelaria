@@ -8,12 +8,8 @@ const DEEPL_API = process.env.DEEPL_API_URL ?? 'https://api-free.deepl.com/v2/tr
 type GHFile = { name: string; sha: string; content: string }
 
 function getGhToken(): string {
-  const cookieStore = cookies()
-  const allCookies = cookieStore.getAll().map(c => c.name)
-  const fromCookie = cookieStore.get('keystatic-gh-access-token')?.value
+  const fromCookie = cookies().get('keystatic-gh-access-token')?.value
   const token = fromCookie ?? process.env.GITHUB_TOKEN
-  console.log('[translate] cookies present:', allCookies.join(', ') || 'BRAK')
-  console.log('[translate] token source:', fromCookie ? `cookie (${fromCookie.slice(0, 8)}…)` : process.env.GITHUB_TOKEN ? `env (${process.env.GITHUB_TOKEN.slice(0, 8)}…)` : 'BRAK')
   if (!token) throw new Error('Brak tokenu GitHub — zaloguj się przez Keystatic lub ustaw GITHUB_TOKEN')
   return token
 }
