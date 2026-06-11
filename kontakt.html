@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
@@ -21,11 +21,11 @@
       </a>
       <nav class="navbar__nav" id="navMenu" aria-label="Nawigacja główna">
         <ul class="navbar__links">
-          <li><a href="index.html#home" class="nav-link">Strona główna</a></li>
-          <li><a href="index.html#specjalizacje" class="nav-link">Specjalizacje</a></li>
-          <li><a href="index.html#o-nas" class="nav-link">O nas</a></li>
-          <li><a href="blog.html" class="nav-link">Artykuły</a></li>
-          <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
+          <li><a href="index.html#home" class="nav-link" data-i18n="nav-home">Strona główna</a></li>
+          <li><a href="index.html#specjalizacje" class="nav-link" data-i18n="nav-spec">Specjalizacje</a></li>
+          <li><a href="index.html#o-nas" class="nav-link" data-i18n="nav-about">O nas</a></li>
+          <li><a href="blog.html" class="nav-link" data-i18n="nav-articles">Artykuły</a></li>
+          <li><a href="kontakt.html" class="nav-link active" data-i18n="nav-contact">Kontakt</a></li>
         </ul>
         <div class="navbar__phones">
           <a href="tel:606411109" class="navbar__phone">
@@ -38,6 +38,13 @@
           </a>
         </div>
       </nav>
+
+      <div class="navbar__lang">
+        <button class="navbar__lang-btn active" data-lang="pl">PL</button>
+        <span class="navbar__lang-sep" aria-hidden="true">|</span>
+        <button class="navbar__lang-btn" data-lang="en">EN</button>
+      </div>
+
       <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
@@ -49,53 +56,53 @@
     <section class="section section--alt">
       <div class="container">
         <div class="section-header reveal">
-          <h1 class="section-title">Skontaktuj się z nami</h1>
-          <p class="section-desc">Zapraszamy do kontaktu. Pierwsza konsultacja pomoże nam ocenić Państwa sprawę i zaproponować optymalne rozwiązanie.</p>
+          <h1 class="section-title" data-i18n="contact-title">Skontaktuj się z nami</h1>
+          <p class="section-desc" data-i18n="contact-page-desc">Zapraszamy do kontaktu. Pierwsza konsultacja pomoże nam ocenić Państwa sprawę i zaproponować optymalne rozwiązanie.</p>
         </div>
         <div class="contact-grid reveal">
 
           <div class="contact-form-wrap">
-            <h2 class="contact-block-title">Wyślij wiadomość</h2>
+            <h2 class="contact-block-title" data-i18n="contact-form-heading">Wyślij wiadomość</h2>
             <form class="contact-form" id="contactForm" novalidate>
               <div class="form-group">
-                <label for="cf-name" class="form-label">Imię i nazwisko <span aria-hidden="true">*</span></label>
-                <input type="text" id="cf-name" name="name" class="form-input" placeholder="Jan Kowalski" required autocomplete="name">
+                <label for="cf-name" class="form-label" data-i18n="cf-name-label">Imię i nazwisko <span aria-hidden="true">*</span></label>
+                <input type="text" id="cf-name" name="name" class="form-input" data-i18n-ph="cf-name-ph" placeholder="Jan Kowalski" required autocomplete="name">
                 <span class="form-error" id="nameError" role="alert"></span>
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="cf-email" class="form-label">Adres e-mail <span aria-hidden="true">*</span></label>
-                  <input type="email" id="cf-email" name="email" class="form-input" placeholder="jan@firma.pl" required autocomplete="email">
+                  <label for="cf-email" class="form-label" data-i18n="cf-email-label">Adres e-mail <span aria-hidden="true">*</span></label>
+                  <input type="email" id="cf-email" name="email" class="form-input" data-i18n-ph="cf-email-ph" placeholder="jan@firma.pl" required autocomplete="email">
                   <span class="form-error" id="emailError" role="alert"></span>
                 </div>
                 <div class="form-group">
-                  <label for="cf-phone" class="form-label">Telefon</label>
-                  <input type="tel" id="cf-phone" name="phone" class="form-input" placeholder="600 000 000" autocomplete="tel">
+                  <label for="cf-phone" class="form-label" data-i18n="cf-phone-label">Telefon</label>
+                  <input type="tel" id="cf-phone" name="phone" class="form-input" data-i18n-ph="cf-phone-ph" placeholder="600 000 000" autocomplete="tel">
                 </div>
               </div>
               <div class="form-group">
-                <label for="cf-topic" class="form-label">Temat <span aria-hidden="true">*</span></label>
+                <label for="cf-topic" class="form-label" data-i18n="cf-topic-label">Temat <span aria-hidden="true">*</span></label>
                 <select id="cf-topic" name="topic" class="form-input form-select" required>
-                  <option value="">— wybierz temat —</option>
-                  <option value="Prawo gospodarcze">Prawo gospodarcze</option>
-                  <option value="Prawo żywnościowe">Prawo żywnościowe</option>
-                  <option value="Pomoc konsumentom">Pomoc konsumentom (kredyty, roszczenia bankowe)</option>
-                  <option value="Prawo medyczne">Prawo medyczne</option>
-                  <option value="Odszkodowania i zadośćuczynienia">Odszkodowania i zadośćuczynienia</option>
-                  <option value="Stała obsługa prawna">Stała obsługa prawna</option>
-                  <option value="Inne">Inne</option>
+                  <option value="" data-i18n="cf-topic-empty">— wybierz temat —</option>
+                  <option value="Prawo gospodarcze" data-i18n="cf-topic-biz">Prawo gospodarcze</option>
+                  <option value="Prawo żywnościowe" data-i18n="cf-topic-food">Prawo żywnościowe</option>
+                  <option value="Pomoc konsumentom" data-i18n="cf-topic-consumer">Pomoc konsumentom (kredyty, roszczenia bankowe)</option>
+                  <option value="Prawo medyczne" data-i18n="cf-topic-med">Prawo medyczne</option>
+                  <option value="Odszkodowania i zadośćuczynienia" data-i18n="cf-topic-comp">Odszkodowania i zadośćuczynienia</option>
+                  <option value="Stała obsługa prawna" data-i18n="cf-topic-retainer">Stała obsługa prawna</option>
+                  <option value="Inne" data-i18n="cf-topic-other">Inne</option>
                 </select>
                 <span class="form-error" id="topicError" role="alert"></span>
               </div>
               <div class="form-group">
-                <label for="cf-message" class="form-label">Treść wiadomości <span aria-hidden="true">*</span></label>
-                <textarea id="cf-message" name="message" class="form-textarea" rows="5" placeholder="Opisz krótko swoją sprawę..." required></textarea>
+                <label for="cf-message" class="form-label" data-i18n="cf-message-label">Treść wiadomości <span aria-hidden="true">*</span></label>
+                <textarea id="cf-message" name="message" class="form-textarea" rows="5" data-i18n-ph="cf-message-ph" placeholder="Opisz krótko swoją sprawę..." required></textarea>
                 <span class="form-error" id="messageError" role="alert"></span>
               </div>
               <div class="form-group form-group--checkbox">
                 <label class="form-checkbox-label">
                   <input type="checkbox" id="cf-rodo" name="rodo" class="form-checkbox" required>
-                  <span class="form-checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez KNS Kancelaria Radców Prawnych w celu odpowiedzi na moje zapytanie, zgodnie z obowiązującymi przepisami o ochronie danych osobowych (RODO). <span aria-hidden="true">*</span></span>
+                  <span class="form-checkbox-text" data-i18n="cf-rodo-text">Wyrażam zgodę na przetwarzanie moich danych osobowych przez KNS Kancelaria Radców Prawnych w celu odpowiedzi na moje zapytanie, zgodnie z obowiązującymi przepisami o ochronie danych osobowych (RODO). <span aria-hidden="true">*</span></span>
                 </label>
                 <span class="form-error" id="rodoError" role="alert"></span>
               </div>
@@ -106,22 +113,22 @@
               </div>
               <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
               <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
-                <span class="btn__text">Wyślij wiadomość</span>
+                <span class="btn__text" data-i18n="cf-submit">Wyślij wiadomość</span>
                 <svg class="btn__spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
               </button>
-              <p class="form-note">* Pola obowiązkowe.</p>
+              <p class="form-note" data-i18n="form-required-note">* Pola obowiązkowe.</p>
             </form>
           </div>
 
           <div class="contact-info">
-            <h2 class="contact-block-title">Dane kontaktowe</h2>
+            <h2 class="contact-block-title" data-i18n="contact-info-heading">Dane kontaktowe</h2>
             <div class="contact-details">
               <div class="contact-item">
                 <div class="contact-item__icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
-                  <p class="contact-item__label">Adres</p>
+                  <p class="contact-item__label" data-i18n="contact-addr-label">Adres</p>
                   <p class="contact-item__value">ul. Stanisława Moniuszki 22/105<br>42-583 Bytom</p>
                 </div>
               </div>
@@ -158,6 +165,7 @@
                 src="https://maps.google.com/maps?q=ul.+Moniuszki+22,+Bytom,+Poland&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
+                data-i18n-aria="map-title"
                 title="Lokalizacja kancelarii na mapie Google">
               </iframe>
             </div>
@@ -175,24 +183,24 @@
         <a href="index.html#home" class="footer__logo-wrap">
           <img src="img/logo-footer.svg" alt="KNS Kancelaria Radców Prawnych" class="footer__logo-img" height="48">
         </a>
-        <p class="footer__tagline">Profesjonalna obsługa prawna<br>dla firm i osób prywatnych.</p>
-        <p class="footer__oirp">Radcowie prawni wpisani na listę<br>Okręgowej Izby Radców Prawnych w Katowicach</p>
+        <p class="footer__tagline" data-i18n="footer-tagline">Profesjonalna obsługa prawna<br>dla firm i osób prywatnych.</p>
+        <p class="footer__oirp" data-i18n="footer-oirp">Radcowie prawni wpisani na listę<br>Okręgowej Izby Radców Prawnych w Katowicach</p>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Nawigacja</h4>
+        <h4 class="footer__heading" data-i18n="footer-nav-heading">Nawigacja</h4>
         <ul class="footer__nav-list">
-          <li><a href="index.html#home">Strona główna</a></li>
-          <li><a href="index.html#specjalizacje">Specjalizacje</a></li>
-          <li><a href="index.html#o-nas">O nas</a></li>
-          <li><a href="blog.html">Artykuły</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="index.html#home" data-i18n="footer-home">Strona główna</a></li>
+          <li><a href="index.html#specjalizacje" data-i18n="footer-spec">Specjalizacje</a></li>
+          <li><a href="index.html#o-nas" data-i18n="footer-about">O nas</a></li>
+          <li><a href="blog.html" data-i18n="footer-articles">Artykuły</a></li>
+          <li><a href="kontakt.html" data-i18n="footer-contact-link">Kontakt</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Kontakt</h4>
+        <h4 class="footer__heading" data-i18n="footer-contact-heading">Kontakt</h4>
         <ul class="footer__contact-list">
-          <li><a href="tel:606411109">606 411 109</a> <span>— r. pr. Nawrocki</span></li>
-          <li><a href="tel:603176037">603 176 037</a> <span>— r. pr. Słania</span></li>
+          <li><a href="tel:606411109">606 411 109</a> <span data-i18n="footer-nawrocki">— r. pr. Nawrocki</span></li>
+          <li><a href="tel:603176037">603 176 037</a> <span data-i18n="footer-slania">— r. pr. Słania</span></li>
           <li><a href="mailto:sekretariat@ns-radcy.pl">sekretariat@ns-radcy.pl</a></li>
           <li class="footer__address">ul. Moniuszki 22/105, Bytom</li>
         </ul>
@@ -200,11 +208,12 @@
     </div>
     <div class="footer__bottom">
       <div class="container">
-        <p>&copy; 2025 KNS Kancelaria Radców Prawnych. Wszelkie prawa zastrzeżone.</p>
+        <p data-i18n="footer-copyright">&copy; 2025 KNS Kancelaria Radców Prawnych. Wszelkie prawa zastrzeżone.</p>
       </div>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/kontakt.js"></script>
 </body>
 </html>

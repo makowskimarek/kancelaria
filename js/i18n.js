@@ -85,9 +85,13 @@ const TRANSLATIONS = {
     'team-slania-tag2': 'Prawo gospodarcze',
     'team-slania-tag3': 'Pomoc konsumentom',
     /* Blog */
-    'blog-title':   'Artykuły',
-    'blog-desc':    'Komentarze prawne i praktyczne informacje o zmianach przepisów przygotowane przez radców prawnych kancelarii.',
-    'blog-all-btn': 'Zobacz wszystkie artykuły',
+    'blog-title':     'Artykuły',
+    'blog-desc':      'Komentarze prawne i praktyczne informacje o zmianach przepisów przygotowane przez radców prawnych kancelarii.',
+    'blog-all-btn':   'Zobacz wszystkie artykuły',
+    'blog-read-more': 'Czytaj więcej',
+    /* Post page */
+    'post-back':      'Wszystkie artykuły',
+    'post-cta-label': 'Zaufaj ekspertom',
     /* Advantage */
     'adv-title':     'Nasza przewaga',
     'adv-exp-title': 'Doświadczenie i praktyka',
@@ -107,6 +111,39 @@ const TRANSLATIONS = {
     'contact-desc':       'Zadzwoń, napisz lub odwiedź nas w biurze — chętnie odpowiemy na Państwa pytania.',
     'contact-addr-label': 'Adres',
     'contact-btn':        'Napisz do nas',
+    /* Contact page */
+    'contact-page-desc':     'Zapraszamy do kontaktu. Pierwsza konsultacja pomoże nam ocenić Państwa sprawę i zaproponować optymalne rozwiązanie.',
+    'contact-form-heading':  'Wyślij wiadomość',
+    'contact-info-heading':  'Dane kontaktowe',
+    'cf-name-label':         'Imię i nazwisko <span aria-hidden="true">*</span>',
+    'cf-name-ph':            'Jan Kowalski',
+    'cf-email-label':        'Adres e-mail <span aria-hidden="true">*</span>',
+    'cf-email-ph':           'jan@firma.pl',
+    'cf-phone-label':        'Telefon',
+    'cf-phone-ph':           '600 000 000',
+    'cf-topic-label':        'Temat <span aria-hidden="true">*</span>',
+    'cf-topic-empty':        '— wybierz temat —',
+    'cf-topic-biz':          'Prawo gospodarcze',
+    'cf-topic-food':         'Prawo żywnościowe',
+    'cf-topic-consumer':     'Pomoc konsumentom (kredyty, roszczenia bankowe)',
+    'cf-topic-med':          'Prawo medyczne',
+    'cf-topic-comp':         'Odszkodowania i zadośćuczynienia',
+    'cf-topic-retainer':     'Stała obsługa prawna',
+    'cf-topic-other':        'Inne',
+    'cf-message-label':      'Treść wiadomości <span aria-hidden="true">*</span>',
+    'cf-message-ph':         'Opisz krótko swoją sprawę...',
+    'cf-rodo-text':          'Wyrażam zgodę na przetwarzanie moich danych osobowych przez KNS Kancelaria Radców Prawnych w celu odpowiedzi na moje zapytanie, zgodnie z obowiązującymi przepisami o ochronie danych osobowych (RODO). <span aria-hidden="true">*</span>',
+    'cf-submit':             'Wyślij wiadomość',
+    'form-required-note':    '* Pola obowiązkowe.',
+    'map-title':             'Lokalizacja kancelarii na mapie Google',
+    'validate-name':         'Proszę podać imię i nazwisko.',
+    'validate-email':        'Proszę podać prawidłowy adres e-mail.',
+    'validate-topic':        'Proszę wybrać temat wiadomości.',
+    'validate-message':      'Treść wiadomości musi mieć co najmniej 10 znaków.',
+    'validate-rodo':         'Wymagana jest zgoda na przetwarzanie danych osobowych.',
+    'form-success':          'Wiadomość wysłana. Skontaktujemy się z Państwem wkrótce.',
+    'form-error-server':     'Błąd serwera. Proszę spróbować ponownie.',
+    'form-error-connection': 'Brak połączenia. Proszę spróbować ponownie lub zadzwonić bezpośrednio.',
     /* Modal */
     'modal-close-aria': 'Zamknij okno',
     'modal-cta':        'Skontaktuj się z nami',
@@ -204,9 +241,13 @@ const TRANSLATIONS = {
     'team-slania-tag2': 'Business Law',
     'team-slania-tag3': 'Consumer Protection',
     /* Blog */
-    'blog-title':   'Articles',
-    'blog-desc':    "Legal commentary and practical information on regulatory changes prepared by the firm's legal counsels.",
-    'blog-all-btn': 'View all articles',
+    'blog-title':     'Articles',
+    'blog-desc':      "Legal commentary and practical information on regulatory changes prepared by the firm's legal counsels.",
+    'blog-all-btn':   'View all articles',
+    'blog-read-more': 'Read more',
+    /* Post page */
+    'post-back':      'All articles',
+    'post-cta-label': 'Trust the experts',
     /* Advantage */
     'adv-title':     'Our advantage',
     'adv-exp-title': 'Experience &amp; Practice',
@@ -226,6 +267,39 @@ const TRANSLATIONS = {
     'contact-desc':       'Call, write or visit us at the office — we will be happy to answer your questions.',
     'contact-addr-label': 'Address',
     'contact-btn':        'Write to us',
+    /* Contact page */
+    'contact-page-desc':     'We welcome your enquiry. An initial consultation will help us assess your case and propose the optimal solution.',
+    'contact-form-heading':  'Send a message',
+    'contact-info-heading':  'Contact details',
+    'cf-name-label':         'Full name <span aria-hidden="true">*</span>',
+    'cf-name-ph':            'John Smith',
+    'cf-email-label':        'Email address <span aria-hidden="true">*</span>',
+    'cf-email-ph':           'john@example.com',
+    'cf-phone-label':        'Phone',
+    'cf-phone-ph':           '+48 600 000 000',
+    'cf-topic-label':        'Subject <span aria-hidden="true">*</span>',
+    'cf-topic-empty':        '— select subject —',
+    'cf-topic-biz':          'Business Law',
+    'cf-topic-food':         'Food Law',
+    'cf-topic-consumer':     'Consumer Protection (credit, banking claims)',
+    'cf-topic-med':          'Medical Law',
+    'cf-topic-comp':         'Compensation &amp; Damages',
+    'cf-topic-retainer':     'Ongoing Legal Support',
+    'cf-topic-other':        'Other',
+    'cf-message-label':      'Message <span aria-hidden="true">*</span>',
+    'cf-message-ph':         'Briefly describe your case...',
+    'cf-rodo-text':          'I consent to the processing of my personal data by KNS Law Firm for the purpose of responding to my enquiry, in accordance with applicable personal data protection regulations (GDPR). <span aria-hidden="true">*</span>',
+    'cf-submit':             'Send message',
+    'form-required-note':    '* Required fields.',
+    'map-title':             'Law firm location on Google Maps',
+    'validate-name':         'Please enter your full name.',
+    'validate-email':        'Please enter a valid email address.',
+    'validate-topic':        'Please select a subject.',
+    'validate-message':      'Message must be at least 10 characters long.',
+    'validate-rodo':         'Consent to data processing is required.',
+    'form-success':          'Message sent. We will contact you shortly.',
+    'form-error-server':     'Server error. Please try again.',
+    'form-error-connection': 'No connection. Please try again or call us directly.',
     /* Modal */
     'modal-close-aria': 'Close window',
     'modal-cta':        'Contact us',
@@ -370,6 +444,11 @@ function applyLang(lang) {
     if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
   });
 
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
+  });
+
   document.querySelectorAll('.card__more').forEach(btn => {
     btn.innerHTML = `${t['card-more-btn']} ${ARROW_SVG}`;
   });
@@ -378,15 +457,30 @@ function applyLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
-  document.title = lang === 'en'
-    ? 'KNS Law Firm | Bytom'
-    : 'KNS Kancelaria Radców Prawnych | Bytom';
+  const path = window.location.pathname;
+  if (path.includes('kontakt')) {
+    document.title = lang === 'en' ? 'Contact | KNS Law Firm' : 'Kontakt | KNS Kancelaria Radców Prawnych';
+  } else if (path.includes('blog.html')) {
+    document.title = lang === 'en' ? 'Articles | KNS Law Firm' : 'Artykuły | KNS Kancelaria Radców Prawnych';
+  } else if (!path.includes('post.html')) {
+    document.title = lang === 'en' ? 'KNS Law Firm | Bytom' : 'KNS Kancelaria Radców Prawnych | Bytom';
+  }
 
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) {
-    metaDesc.content = lang === 'en'
-      ? 'KNS Law Firm – Marcin Nawrocki and Adam Słania. Professional legal services in Bytom. Business law, food law, medical law, compensation.'
-      : 'KNS Kancelaria Radców Prawnych – Marcin Nawrocki i Adam Słania. Profesjonalna pomoc prawna w Bytomiu. Prawo gospodarcze, żywnościowe, medyczne, odszkodowania.';
+    if (path.includes('kontakt')) {
+      metaDesc.content = lang === 'en'
+        ? 'Contact KNS Law Firm in Bytom. Contact form, phone, email and office address.'
+        : 'Skontaktuj się z KNS Kancelaria Radców Prawnych w Bytomiu. Formularz kontaktowy, telefon, e-mail i adres kancelarii.';
+    } else if (path.includes('blog.html')) {
+      metaDesc.content = lang === 'en'
+        ? "Legal commentary and practical information on regulatory changes prepared by the firm's legal counsels."
+        : 'Komentarze prawne i praktyczne informacje o zmianach przepisów.';
+    } else if (!path.includes('post.html')) {
+      metaDesc.content = lang === 'en'
+        ? 'KNS Law Firm – Marcin Nawrocki and Adam Słania. Professional legal services in Bytom. Business law, food law, medical law, compensation.'
+        : 'KNS Kancelaria Radców Prawnych – Marcin Nawrocki i Adam Słania. Profesjonalna pomoc prawna w Bytomiu. Prawo gospodarcze, żywnościowe, medyczne, odszkodowania.';
+    }
   }
 
   localStorage.setItem('kns-lang', lang);
@@ -396,6 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang);
 
   document.querySelectorAll('.navbar__lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    btn.addEventListener('click', () => {
+      applyLang(btn.dataset.lang);
+      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: btn.dataset.lang } }));
+    });
   });
 });

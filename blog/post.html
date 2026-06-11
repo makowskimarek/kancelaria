@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
@@ -24,11 +24,11 @@
 
       <nav class="navbar__nav" id="navMenu" aria-label="Nawigacja główna">
         <ul class="navbar__links">
-          <li><a href="../index.html#home" class="nav-link">Strona główna</a></li>
-          <li><a href="../index.html#specjalizacje" class="nav-link">Specjalizacje</a></li>
-          <li><a href="../index.html#o-nas" class="nav-link">O nas</a></li>
-          <li><a href="../blog.html" class="nav-link">Artykuły</a></li>
-          <li><a href="../kontakt.html" class="nav-link">Kontakt</a></li>
+          <li><a href="../index.html#home" class="nav-link" data-i18n="nav-home">Strona główna</a></li>
+          <li><a href="../index.html#specjalizacje" class="nav-link" data-i18n="nav-spec">Specjalizacje</a></li>
+          <li><a href="../index.html#o-nas" class="nav-link" data-i18n="nav-about">O nas</a></li>
+          <li><a href="../blog.html" class="nav-link active" data-i18n="nav-articles">Artykuły</a></li>
+          <li><a href="../kontakt.html" class="nav-link" data-i18n="nav-contact">Kontakt</a></li>
         </ul>
         <div class="navbar__phones">
           <a href="tel:606411109" class="navbar__phone">
@@ -42,6 +42,12 @@
         </div>
       </nav>
 
+      <div class="navbar__lang">
+        <button class="navbar__lang-btn active" data-lang="pl">PL</button>
+        <span class="navbar__lang-sep" aria-hidden="true">|</span>
+        <button class="navbar__lang-btn" data-lang="en">EN</button>
+      </div>
+
       <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
         <span></span>
         <span></span>
@@ -53,7 +59,10 @@
 <main>
   <div class="post-header">
     <div class="container">
-      <a href="../blog.html" class="post-back"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Wszystkie artykuły</a>
+      <a href="../blog.html" class="post-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i18n="post-back">Wszystkie artykuły</span>
+      </a>
       <div class="post-header__meta">
         <span class="blog-card__category" id="post-category"></span>
         <time class="blog-card__date" id="post-date"></time>
@@ -72,10 +81,10 @@
         <img src="../img/AdobeStock_358263747.png" alt="Konsultacja prawna" loading="lazy">
       </div>
       <div class="cta-split__content">
-        <span class="section-label cta-split__label">Zaufaj ekspertom</span>
+        <span class="section-label cta-split__label" data-i18n="post-cta-label">Zaufaj ekspertom</span>
         <h2 class="cta-split__title" id="post-cta-title"></h2>
         <p class="cta-split__text" id="post-cta-text"></p>
-        <a href="../kontakt.html" class="btn btn--white btn--lg">Umów konsultację</a>
+        <a href="../kontakt.html" class="btn btn--white btn--lg" data-i18n="cta-btn">Umów konsultację</a>
       </div>
     </div>
   </section>
@@ -91,24 +100,24 @@
                class="footer__logo-img"
                height="48">
         </a>
-        <p class="footer__tagline">Profesjonalna obsługa prawna<br>dla firm i osób prywatnych.</p>
-        <p class="footer__oirp">Radcowie prawni wpisani na listę<br>Okręgowej Izby Radców Prawnych w Katowicach</p>
+        <p class="footer__tagline" data-i18n="footer-tagline">Profesjonalna obsługa prawna<br>dla firm i osób prywatnych.</p>
+        <p class="footer__oirp" data-i18n="footer-oirp">Radcowie prawni wpisani na listę<br>Okręgowej Izby Radców Prawnych w Katowicach</p>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Nawigacja</h4>
+        <h4 class="footer__heading" data-i18n="footer-nav-heading">Nawigacja</h4>
         <ul class="footer__nav-list">
-          <li><a href="../index.html#home">Strona główna</a></li>
-          <li><a href="../index.html#specjalizacje">Specjalizacje</a></li>
-          <li><a href="../index.html#o-nas">O nas</a></li>
-          <li><a href="../blog.html">Artykuły</a></li>
-          <li><a href="../kontakt.html">Kontakt</a></li>
+          <li><a href="../index.html#home" data-i18n="footer-home">Strona główna</a></li>
+          <li><a href="../index.html#specjalizacje" data-i18n="footer-spec">Specjalizacje</a></li>
+          <li><a href="../index.html#o-nas" data-i18n="footer-about">O nas</a></li>
+          <li><a href="../blog.html" data-i18n="footer-articles">Artykuły</a></li>
+          <li><a href="../kontakt.html" data-i18n="footer-contact-link">Kontakt</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Kontakt</h4>
+        <h4 class="footer__heading" data-i18n="footer-contact-heading">Kontakt</h4>
         <ul class="footer__contact-list">
-          <li><a href="tel:606411109">606 411 109</a> <span>— r. pr. Nawrocki</span></li>
-          <li><a href="tel:603176037">603 176 037</a> <span>— r. pr. Słania</span></li>
+          <li><a href="tel:606411109">606 411 109</a> <span data-i18n="footer-nawrocki">— r. pr. Nawrocki</span></li>
+          <li><a href="tel:603176037">603 176 037</a> <span data-i18n="footer-slania">— r. pr. Słania</span></li>
           <li><a href="mailto:sekretariat@ns-radcy.pl">sekretariat@ns-radcy.pl</a></li>
           <li class="footer__address">ul. Moniuszki 22/105, Bytom</li>
         </ul>
@@ -116,11 +125,12 @@
     </div>
     <div class="footer__bottom">
       <div class="container">
-        <p>&copy; 2025 KNS Kancelaria Radców Prawnych. Wszelkie prawa zastrzeżone.</p>
+        <p data-i18n="footer-copyright">&copy; 2025 KNS Kancelaria Radców Prawnych. Wszelkie prawa zastrzeżone.</p>
       </div>
     </div>
   </footer>
 
+<script src="../js/i18n.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/marked.min.js"></script>
 <script src="../js/post-loader.js"></script>

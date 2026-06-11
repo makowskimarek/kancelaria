@@ -261,7 +261,7 @@ function formatPostDate(iso) {
 
 function blogCardHTML(p, i) {
   const delay = (i * 0.09).toFixed(2);
-  const arrowSvg = ARROW_SVG;
+  const readMore = TRANSLATIONS[currentLang]['blog-read-more'] || 'Czytaj więcej';
   return `<article class="blog-card reveal" data-delay="${delay}">
     <div class="blog-card__meta">
       <span class="blog-card__category">${p.category}</span>
@@ -269,19 +269,31 @@ function blogCardHTML(p, i) {
     </div>
     <h3 class="blog-card__title">${p.title}</h3>
     <p class="blog-card__excerpt">${p.excerpt}</p>
-    <a href="blog/post.html?slug=${p.slug}" class="blog-card__btn">Czytaj więcej ${arrowSvg}</a>
+    <a href="blog/post.html?slug=${p.slug}" class="blog-card__btn">${readMore} ${ARROW_SVG}</a>
   </article>`;
 }
 
-if (blogGrid) {
-  fetch('content/blog/posts.json')
+function loadBlogPosts() {
+  if (!blogGrid) return;
+  const jsonPath = currentLang === 'en'
+    ? 'content/blog/en/posts.json'
+    : 'content/blog/posts.json';
+
+  fetch(jsonPath)
     .then(r => r.json())
     .then(posts => {
-      blogGrid.innerHTML = posts.slice(0, 4).map(blogCardHTML).join('');
+      const list = onBlogPage ? posts : posts.slice(0, 4);
+      blogGrid.innerHTML = list.map(blogCardHTML).join('');
       blogGrid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     })
     .catch(() => {});
 }
+
+loadBlogPosts();
+
+document.addEventListener('langchange', () => {
+  if (blogGrid) loadBlogPosts();
+});
 
 /* =============================================
    CONTACT FORM
