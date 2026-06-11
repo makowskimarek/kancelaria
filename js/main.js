@@ -289,11 +289,6 @@ function loadBlogPosts() {
     .catch(() => {});
 }
 
-loadBlogPosts();
-
-document.addEventListener('langchange', () => {
-  if (blogGrid) loadBlogPosts();
-});
 
 /* =============================================
    CONTACT FORM

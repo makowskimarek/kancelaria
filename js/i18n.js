@@ -484,6 +484,8 @@ function applyLang(lang) {
   }
 
   localStorage.setItem('kns-lang', lang);
+
+  if (typeof loadBlogPosts === 'function') loadBlogPosts();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
