@@ -1592,6 +1592,67 @@ section[id] {
 }
 
 /* =============================================
+   LANG SWITCHER
+   ============================================= */
+.navbar__lang {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.navbar__lang-btn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.navbar__lang-btn.active {
+  color: white;
+}
+
+.navbar__lang-btn:hover {
+  color: white;
+}
+
+.navbar.scrolled .navbar__lang-btn {
+  color: var(--color-muted);
+  opacity: 0.55;
+}
+
+.navbar.scrolled .navbar__lang-btn.active {
+  color: var(--color-primary);
+  opacity: 1;
+  background: var(--color-bg-alt);
+}
+
+.navbar.scrolled .navbar__lang-btn:hover {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.navbar__lang-sep {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  padding: 0 1px;
+}
+
+.navbar.scrolled .navbar__lang-sep {
+  color: var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .navbar__lang { margin-left: 0; }
+}
+
+/* =============================================
    REVEAL ANIMATIONS
    ============================================= */
 .reveal {

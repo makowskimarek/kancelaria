@@ -205,22 +205,22 @@ const modalIcon    = document.getElementById('modalIcon');
 const modalClose   = document.getElementById('modalClose');
 const modalCtaBtn  = document.getElementById('modalCta');
 
-const ARROW_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
-
 document.querySelectorAll('.card').forEach(card => {
-  const titleEl = card.querySelector('.card__title');
-  if (!titleEl || !SPEC_DETAILS[titleEl.textContent.trim()]) return;
+  const specKey = card.dataset.specKey;
+  if (!specKey || !SPEC_DETAILS[specKey]) return;
 
   const btn = document.createElement('button');
   btn.className = 'card__more';
-  btn.innerHTML = `Dowiedz się więcej ${ARROW_SVG}`;
+  btn.innerHTML = `${TRANSLATIONS[currentLang]['card-more-btn']} ${ARROW_SVG}`;
   btn.addEventListener('click', () => openSpecModal(card));
   card.appendChild(btn);
 });
 
 function openSpecModal(card) {
-  const title = card.querySelector('.card__title').textContent.trim();
-  const data  = SPEC_DETAILS[title];
+  const title   = card.querySelector('.card__title').textContent.trim();
+  const specKey = card.dataset.specKey;
+  const details = currentLang === 'en' ? SPEC_DETAILS_EN : SPEC_DETAILS;
+  const data    = details[specKey];
   if (!data) return;
 
   const iconEl = card.querySelector('.card__icon');
@@ -255,12 +255,13 @@ if (specModal) {
 const blogGrid = document.getElementById('blogGrid');
 
 function formatPostDate(iso) {
-  return new Date(iso).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+  const locale = currentLang === 'en' ? 'en-GB' : 'pl-PL';
+  return new Date(iso).toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 function blogCardHTML(p, i) {
   const delay = (i * 0.09).toFixed(2);
-  const arrowSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  const arrowSvg = ARROW_SVG;
   return `<article class="blog-card reveal" data-delay="${delay}">
     <div class="blog-card__meta">
       <span class="blog-card__category">${p.category}</span>
