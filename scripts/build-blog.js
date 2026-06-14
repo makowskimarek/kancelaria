@@ -58,48 +58,33 @@ const HEAD = (title, desc, cssPath) => `<!DOCTYPE html>
 const ARROW_LEFT = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`
 const ARROW_RIGHT = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`
 
-function buildBlogList(posts, navbar, footer) {
-  const cards = posts.length === 0
-    ? `<p style="color:var(--color-muted);text-align:center">Brak artykułów.</p>`
-    : posts.map(p => `
-      <article class="blog-card">
-        <div class="blog-card__meta">
-          <span class="blog-card__category">${p.category}</span>
-          <time class="blog-card__date">${formatDate(p.date)}</time>
-        </div>
-        <h2 class="blog-card__title">${p.title}</h2>
-        <p class="blog-card__excerpt">${p.excerpt}</p>
-        <a href="blog/post.html?slug=${p.slug}" class="blog-card__btn">Czytaj więcej ${ARROW_RIGHT}</a>
-      </article>`).join('\n')
-
+function buildBlogList(navbar, footer) {
   return `${HEAD('Artykuły', 'Komentarze prawne i praktyczne informacje o zmianach przepisów.', 'css/style.css')}
 
 ${navbar}
 
-<main>
-  <div class="post-header post-header--hero">
-    <img src="../img/articles.jpg" class="post-header__bg" alt="" aria-hidden="true">
-    <div class="container">
-      <a href="index.html" class="post-back">${ARROW_LEFT} Strona główna</a>
-      <h1 class="post-header__title">Artykuły</h1>
-      <p class="section-desc" style="margin-top:14px;text-align:left">
-        Komentarze prawne i praktyczne informacje o zmianach przepisów przygotowane przez radców prawnych kancelarii.
-      </p>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="container">
-      <div class="blog-grid">
-        ${cards}
+  <main>
+    <div class="post-header post-header--hero">
+      <img src="img/articles.jpg" class="post-header__bg" alt="" aria-hidden="true">
+      <div class="container">
+        <h1 class="post-header__title" data-i18n="blog-title">Artykuły</h1>
+        <p class="section-desc" style="margin-top:14px;text-align:left" data-i18n="blog-desc">
+          Komentarze prawne i praktyczne informacje o zmianach przepisów przygotowane przez radców prawnych kancelarii.
+        </p>
       </div>
     </div>
-  </section>
-</main>
+
+    <section class="section">
+      <div class="container">
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+  </main>
 
 ${footer}
 
-<script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>`
 }
@@ -109,13 +94,14 @@ function main() {
   const navbar = extract(indexHtml, '<!-- BLOG_NAV_START -->', '<!-- BLOG_NAV_END -->')
     .replace(/href="#/g, 'href="index.html#')
     .replace('class="navbar"', 'class="navbar scrolled navbar--init"')
+    .replace('href="blog.html" class="nav-link"', 'href="blog.html" class="nav-link active"')
   const footer = extract(indexHtml, '<!-- BLOG_FOOTER_START -->', '<!-- BLOG_FOOTER_END -->')
     .replace(/href="#/g, 'href="index.html#')
 
   const posts = getAllPosts()
   console.log(`Znaleziono ${posts.length} wpisów`)
 
-  fs.writeFileSync(path.join(ROOT, 'blog.html'), buildBlogList(posts, navbar, footer), 'utf-8')
+  fs.writeFileSync(path.join(ROOT, 'blog.html'), buildBlogList(navbar, footer), 'utf-8')
   console.log('Wygenerowano blog.html')
 
   const postsJson = posts.map(({ slug, title, date, category, excerpt }) => ({ slug, title, date, category, excerpt }))
