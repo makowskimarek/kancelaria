@@ -291,11 +291,10 @@ function loadBlogPosts() {
 
 document.addEventListener('DOMContentLoaded', function () {
   loadBlogPosts();
-  document.querySelectorAll('.navbar__lang-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      setTimeout(loadBlogPosts, 0);
-    });
-  });
+});
+
+document.addEventListener('langchange', function () {
+  setTimeout(loadBlogPosts, 0);
 });
 
 

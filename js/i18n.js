@@ -488,11 +488,11 @@ function applyLang(lang) {
 
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang);
+});
 
-  document.querySelectorAll('.navbar__lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      applyLang(btn.dataset.lang);
-      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: btn.dataset.lang } }));
-    });
-  });
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.navbar__lang-btn');
+  if (!btn) return;
+  applyLang(btn.dataset.lang);
+  document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: btn.dataset.lang } }));
 });
