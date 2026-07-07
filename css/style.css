@@ -1129,6 +1129,15 @@ section[id] {
   line-height: 1.65;
 }
 
+.form-checkbox-text a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.form-checkbox-text a:hover {
+  color: var(--color-primary);
+}
+
 /* Contact info */
 .contact-info { padding-top: 4px; }
 
@@ -1310,13 +1319,24 @@ section[id] {
 .footer__bottom .container {
   padding-block: 18px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 4px 18px;
 }
 
 .footer__bottom p {
   font-size: 0.77rem;
   color: rgba(255, 255, 255, 0.3);
   text-align: center;
+}
+
+.footer__bottom a {
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.2s;
+}
+
+.footer__bottom a:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* =============================================
