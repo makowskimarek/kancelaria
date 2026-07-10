@@ -1804,6 +1804,9 @@ section[id] {
   .cards-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
   .team-card { flex-direction: column; align-items: flex-start; }
+  .team-card__avatar { align-self: center; }
+  .team-card__name,
+  .team-card__role { text-align: center; }
   .feature { flex-basis: 100%; }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
 
