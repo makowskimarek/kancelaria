@@ -42,12 +42,17 @@ export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '127.0.0.1';
   const ratelimit = getRatelimit();
   if (ratelimit) {
-    const { success } = await ratelimit.limit(ip);
-    if (!success) {
-      return NextResponse.json(
-        { error: 'Zbyt wiele prób. Proszę spróbować za godzinę lub zadzwonić bezpośrednio.' },
-        { status: 429, headers }
-      );
+    try {
+      const { success } = await ratelimit.limit(ip);
+      if (!success) {
+        return NextResponse.json(
+          { error: 'Zbyt wiele prób. Proszę spróbować za godzinę lub zadzwonić bezpośrednio.' },
+          { status: 429, headers }
+        );
+      }
+    } catch (err) {
+      // Upstash niedostępny — nie blokujemy formularza z powodu awarii rate limitera
+      console.error('Ratelimit error:', err);
     }
   }
 
