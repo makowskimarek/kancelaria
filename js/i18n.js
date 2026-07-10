@@ -12,6 +12,8 @@ const TRANSLATIONS = {
     'nav-about':    'O nas',
     'nav-articles': 'Artykuły',
     'nav-contact':  'Kontakt',
+    'navbar-nawrocki': '— r. pr. Marcin Nawrocki',
+    'navbar-slania':   '— r. pr. Adam Słania',
     /* Hero */
     'hero-consult': 'Umów konsultację',
     'hero-spec':    'Nasze specjalizacje',
@@ -100,6 +102,12 @@ const TRANSLATIONS = {
     'adv-ind-desc':  'Każda sprawa traktowana jest z pełnym zaangażowaniem. Zawsze znamy perspektywę naszego klienta.',
     'adv-en-title':  'Obsługa w języku angielskim',
     'adv-en-desc':   'Świadczymy pomoc prawną również w języku angielskim – dla klientów zagranicznych i transakcji międzynarodowych.',
+    'adv-biz-title': 'Perspektywa biznesowa',
+    'adv-biz-desc':  'Rozumiemy, że prawo ma wspierać decyzje biznesowe, dlatego nasze rekomendacje są konkretne, praktyczne i uwzględniają finansowe skutki podejmowanych działań.',
+    'adv-result-title': 'Nastawienie na rezultat',
+    'adv-result-desc':  'Koncentrujemy się nie tylko na analizie problemu, ale przede wszystkim na znalezieniu skutecznego i bezpiecznego rozwiązania.',
+    'adv-comp-title': 'Kompleksowe wsparcie',
+    'adv-comp-desc':  'Prowadzimy sprawy od wstępnej analizy, przez przygotowanie dokumentów i prowadzenie negocjacji aż po reprezentację w postępowaniach sądowych i skuteczną egzekucję naszych rekomendacji.',
     /* Partners */
     'partners-title': 'Zaufali nam',
     /* CTA */
@@ -168,6 +176,8 @@ const TRANSLATIONS = {
     'nav-about':    'About us',
     'nav-articles': 'Articles',
     'nav-contact':  'Contact',
+    'navbar-nawrocki': '— atty. Marcin Nawrocki',
+    'navbar-slania':   '— atty. Adam Słania',
     /* Hero */
     'hero-consult': 'Schedule a consultation',
     'hero-spec':    'Our specialisations',
@@ -256,6 +266,12 @@ const TRANSLATIONS = {
     'adv-ind-desc':  "Every case is treated with full commitment. We always understand our client's perspective.",
     'adv-en-title':  'English-language services',
     'adv-en-desc':   'We also provide legal assistance in English — for foreign clients and international transactions.',
+    'adv-biz-title': 'Business perspective',
+    'adv-biz-desc':  'We understand that law should support business decisions, so our recommendations are specific, practical, and take financial consequences into account.',
+    'adv-result-title': 'Result-driven approach',
+    'adv-result-desc':  'We focus not only on analyzing the problem, but above all on finding an effective and safe solution.',
+    'adv-comp-title': 'Comprehensive support',
+    'adv-comp-desc':  'We handle cases from initial analysis, through document preparation and negotiations, to representation in court proceedings and effective enforcement of our recommendations.',
     /* Partners */
     'partners-title': 'They trust us',
     /* CTA */

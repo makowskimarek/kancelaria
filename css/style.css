@@ -266,6 +266,11 @@ h1, h2, h3, h4 {
 .navbar.scrolled .navbar__phone { color: var(--color-primary); }
 .navbar.scrolled .navbar__phone:hover { color: var(--color-accent); }
 
+.navbar__phone-name {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
 /* Logo SVG image */
 .navbar__logo-img {
   height: 42px;
@@ -567,10 +572,10 @@ section[id] {
 
 .team-card {
   display: flex;
-  gap: 28px;
+  gap: 20px;
   background: white;
   border-radius: var(--radius-lg);
-  padding: clamp(28px, 3.5vw, 44px);
+  padding: clamp(24px, 3vw, 36px);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   transition: box-shadow 0.3s;
@@ -581,14 +586,14 @@ section[id] {
 .team-card__avatar { flex-shrink: 0; }
 
 .avatar-placeholder {
-  width: 88px;
-  height: 88px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: white;
   letter-spacing: 0.02em;
@@ -599,8 +604,8 @@ section[id] {
 
 /* Real team photos */
 .team-photo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
@@ -631,6 +636,8 @@ section[id] {
   color: var(--color-muted);
   line-height: 1.7;
   margin-bottom: 10px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .team-card__tags {
@@ -672,15 +679,32 @@ section[id] {
 .team-card__phone:hover { color: var(--color-primary); }
 
 /* =============================================
-   FEATURES
+   FEATURES — CAROUSEL
    ============================================= */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.features-carousel { position: relative; }
+
+.features-track {
+  display: flex;
   gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
+/* Wyłączamy natywny snap podczas animacji JS, żeby przeglądarka
+   nie „doskakiwała" do punktu snap i nie psuła zadanego czasu przejścia */
+.features-track.is-animating {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.features-track::-webkit-scrollbar { display: none; }
+
 .feature {
+  flex: 0 0 calc((100% - 2 * var(--gap)) / 3);
+  scroll-snap-align: start;
   text-align: center;
   padding: clamp(28px, 3.5vw, 48px) clamp(20px, 2.5vw, 32px);
   border-radius: var(--radius);
@@ -1694,6 +1718,7 @@ section[id] {
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-grid { grid-template-columns: 1fr; }
   .partners-grid { grid-template-columns: repeat(3, 1fr); }
+  .feature { flex-basis: calc((100% - var(--gap)) / 2); }
   .contact-grid { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
   .footer__inner { grid-template-columns: 1.5fr 1fr 1fr; }
 }
@@ -1779,7 +1804,7 @@ section[id] {
   .cards-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
   .team-card { flex-direction: column; align-items: flex-start; }
-  .features-grid { grid-template-columns: 1fr; }
+  .feature { flex-basis: 100%; }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
 
   .form-row { grid-template-columns: 1fr; }

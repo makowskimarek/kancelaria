@@ -393,6 +393,116 @@ function showStatus(msg, type) {
   formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+/* =============================================
+   FEATURES CAROUSEL — "Nasza przewaga"
+   ============================================= */
+function initCarousel(trackId) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+
+  const items = Array.from(track.children);
+
+  /* Klony pierwszych kafelków doklejone na końcu — dzięki nim przejście
+     z ostatniego na pierwszy kafelek jest ciągłe (karuzela "w kółko"),
+     bez przeskoku w przeciwną stronę. */
+  const CLONE_COUNT = Math.min(3, items.length);
+  items.slice(0, CLONE_COUNT).forEach(el => {
+    const clone = el.cloneNode(true);
+    clone.classList.remove('reveal', 'visible');
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a, button, input, textarea, select').forEach(f => f.setAttribute('tabindex', '-1'));
+    track.appendChild(clone);
+  });
+
+  /* --- Autoplay: przesuwanie o jeden kafelek --- */
+  const AUTOPLAY_STEP_MS = 2800;   // co ile przesuwamy się o jeden kafelek
+  const AUTOPLAY_TRANSITION_MS = 1800; // czas trwania przejścia
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wrap = track.closest('.features-carousel');
+  let autoplayTimer = null;
+  let isInView = false;
+
+  function itemStep() {
+    return items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : 0;
+  }
+
+  function animateScrollTo(target, duration, onDone) {
+    const start = track.scrollLeft;
+    const change = target - start;
+    if (Math.abs(change) < 1) { onDone?.(); return; }
+    track.classList.add('is-animating');
+    const startTime = performance.now();
+    function frame(now) {
+      const t = Math.min((now - startTime) / duration, 1);
+      const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      track.scrollLeft = start + change * eased;
+      if (t < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        onDone?.();
+        track.classList.remove('is-animating');
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function stepAutoplay() {
+    const step = itemStep();
+    if (!step) return;
+    const realCount = items.length;
+    const currentIndex = Math.round(track.scrollLeft / step);
+    const nextIndex = currentIndex + 1;
+    animateScrollTo(nextIndex * step, AUTOPLAY_TRANSITION_MS, () => {
+      // Po dojechaniu na sklonowany kafelek wracamy niezauważalnie
+      // do jego oryginału — wizualnie identyczny, więc bez "skoku".
+      if (nextIndex >= realCount) {
+        track.scrollLeft = (nextIndex - realCount) * step;
+      }
+    });
+  }
+
+  const AUTOPLAY_INITIAL_DELAY_MS = 600; // pierwszy ruch szybciej, kolejne w normalnym tempie
+
+  function stopAutoplay() {
+    clearTimeout(autoplayTimer);
+    autoplayTimer = null;
+  }
+
+  function startAutoplay() {
+    if (prefersReducedMotion || !isInView) return;
+    stopAutoplay();
+    autoplayTimer = setTimeout(function tick() {
+      stepAutoplay();
+      autoplayTimer = setTimeout(tick, AUTOPLAY_STEP_MS);
+    }, AUTOPLAY_INITIAL_DELAY_MS);
+  }
+
+  if (wrap) {
+    wrap.addEventListener('mouseenter', stopAutoplay);
+    wrap.addEventListener('mouseleave', startAutoplay);
+    wrap.addEventListener('touchstart', stopAutoplay, { passive: true });
+    wrap.addEventListener('touchend', startAutoplay, { passive: true });
+    wrap.addEventListener('focusin', stopAutoplay);
+    wrap.addEventListener('focusout', startAutoplay);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
+  if (!prefersReducedMotion) {
+    new IntersectionObserver(entries => {
+      isInView = entries[0].isIntersecting;
+      if (isInView) startAutoplay();
+      else stopAutoplay();
+    }, { threshold: 0.4 }).observe(wrap || track);
+  }
+
+}
+
+initCarousel('featuresTrack');
+
 function clearStatus() {
   formStatus.textContent = '';
   formStatus.className   = 'form-status';
