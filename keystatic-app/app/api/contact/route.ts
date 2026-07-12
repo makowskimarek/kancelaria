@@ -3,7 +3,14 @@ import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '';
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN ?? '')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+function isAllowedOrigin(origin: string) {
+  return ALLOWED_ORIGINS.includes(origin);
+}
 
 function getRatelimit() {
   const url   = process.env.UPSTASH_REDIS_REST_URL   ?? process.env.kancelaria_KV_REST_API_URL;
@@ -26,13 +33,13 @@ function corsHeaders(origin: string) {
 
 export async function OPTIONS(req: NextRequest) {
   const origin = req.headers.get('origin') ?? '';
-  if (origin !== ALLOWED_ORIGIN) return new NextResponse(null, { status: 403 });
+  if (!isAllowedOrigin(origin)) return new NextResponse(null, { status: 403 });
   return new NextResponse(null, { status: 204, headers: corsHeaders(origin) });
 }
 
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin') ?? '';
-  if (origin !== ALLOWED_ORIGIN) {
+  if (!isAllowedOrigin(origin)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
