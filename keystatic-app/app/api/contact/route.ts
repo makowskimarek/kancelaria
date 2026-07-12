@@ -76,12 +76,19 @@ export async function POST(req: NextRequest) {
   ].filter((l): l is string => l !== null);
 
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"Formularz KNS" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_TO,
       replyTo: `"${name.trim()}" <${email.trim()}>`,
       subject: `[Formularz] ${topic || 'Zapytanie ze strony'}`,
       text: lines.join('\n'),
+    });
+    console.log('SMTP accepted:', {
+      messageId: info.messageId,
+      response: info.response,
+      accepted: info.accepted,
+      rejected: info.rejected,
+      to: process.env.SMTP_TO,
     });
   } catch (err) {
     console.error('SMTP error:', err);
