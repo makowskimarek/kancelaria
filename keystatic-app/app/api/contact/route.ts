@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN ?? '')
   .split(',')
@@ -10,17 +8,6 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN ?? '')
 
 function isAllowedOrigin(origin: string) {
   return ALLOWED_ORIGINS.includes(origin);
-}
-
-function getRatelimit() {
-  const url   = process.env.UPSTASH_REDIS_REST_URL   ?? process.env.kancelaria_KV_REST_API_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.kancelaria_KV_REST_API_TOKEN;
-  if (!url || !token) return null;
-  return new Ratelimit({
-    redis: new Redis({ url, token }),
-    limiter: Ratelimit.slidingWindow(5, '1 h'),
-    prefix: 'kns:contact',
-  });
 }
 
 function corsHeaders(origin: string) {
@@ -44,24 +31,6 @@ export async function POST(req: NextRequest) {
   }
 
   const headers = corsHeaders(origin);
-
-  // rate limiting — max 5 wysłań na godzinę per IP
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '127.0.0.1';
-  const ratelimit = getRatelimit();
-  if (ratelimit) {
-    try {
-      const { success } = await ratelimit.limit(ip);
-      if (!success) {
-        return NextResponse.json(
-          { error: 'Zbyt wiele prób. Proszę spróbować za godzinę lub zadzwonić bezpośrednio.' },
-          { status: 429, headers }
-        );
-      }
-    } catch (err) {
-      // Upstash niedostępny — nie blokujemy formularza z powodu awarii rate limitera
-      console.error('Ratelimit error:', err);
-    }
-  }
 
   let body: Record<string, string>;
   try {
