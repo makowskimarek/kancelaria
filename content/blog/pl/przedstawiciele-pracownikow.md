@@ -1,6 +1,6 @@
 ---
 title: Jak wybrać przedstawicieli pracowników w firmie bez związków zawodowych?
-date: '2026-11-05'
+date: 2026-07-05
 category: Prawo pracy
 excerpt: >-
   Projekt ustawy o jawności wynagrodzeń nakłada obowiązek konsultacji z
@@ -11,7 +11,6 @@ ctaText: >-
   Przygotujemy procedurę i dokumentację dopasowaną do struktury Twojej
   organizacji, zanim pojawią się pierwsze ustawowe obowiązki.
 ---
-
 Projektowane przepisy ustawy o jawności wynagrodzeń zakładają realizację konsultacji pracodawców z zakładowymi organizacjami związkowymi. Co jednak, jeśli tych organizacji nie ma u dużego pracodawcy?
 
 Opublikowany w pierwszych dniach maja projekt ustawy o jawności wynagrodzeń nie narzuca szczegółowej procedury wyboru przedstawicieli pracowników. Posługuje się formułą, że w razie braku zakładowej organizacji związkowej wspólna ocena wynagrodzeń ma być przeprowadzana w konsultacji z przedstawicielami pracowników wyłonionymi w trybie przyjętym u danego pracodawcy. Oznacza to, że to pracodawca powinien zapewnić transparentny, udokumentowany i możliwy do zweryfikowania sposób ich wyboru.
