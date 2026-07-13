@@ -1,6 +1,6 @@
 ---
 title: Wejście w życie nowych przepisów o KSC
-date: '2026-11-05'
+date: 2026-06-05
 category: Cyberbezpieczeństwo
 excerpt: >-
   Ustawa wdrażająca dyrektywę NIS2 obowiązuje od 3 kwietnia 2026 r. Znacznie
@@ -11,7 +11,6 @@ ctaText: >-
   Pomożemy ocenić, czy Twoja organizacja jest podmiotem kluczowym lub ważnym,
   przeprowadzimy audyt luk i wdrożymy wymaganą dokumentację.
 ---
-
 Nowe przepisy o Krajowym Systemie Cyberbezpieczeństwa stanowią duże wyzwanie dla przedsiębiorców wskazanych jako podmioty ważne lub kluczowe. Jak wygląda harmonogram wejścia w życie nowych obowiązków?
 
 W przypadku nowelizacji ustawy o krajowym systemie cyberbezpieczeństwa należy odnotować istotną zmianę: nie mówimy już wyłącznie o projekcie. Ustawa z 23 stycznia 2026 r. o zmianie ustawy o krajowym systemie cyberbezpieczeństwa oraz niektórych innych ustaw została ogłoszona w Dzienniku Ustaw 2 marca 2026 r., a zgodnie z jej art. 49 weszła w życie po upływie miesiąca od dnia ogłoszenia, czyli 3 kwietnia 2026 r.
