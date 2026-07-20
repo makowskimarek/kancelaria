@@ -1,6 +1,6 @@
 ---
 title: Entry into force of the new regulations on the KSC
-date: 2026-07-05
+date: 2026-06-05
 category: Cybersecurity
 excerpt: >-
   The Act transposing the NIS2 Directive comes into force on 3 April 2026. A
