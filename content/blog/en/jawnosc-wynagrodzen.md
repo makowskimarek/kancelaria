@@ -1,15 +1,15 @@
 ---
 title: New draft bill on pay transparency
-date: 2026-11-05
+date: 2026-07-05
 category: Employment law
 excerpt: >-
-  Draft Bill UC127 implements EU Directive 2023/970. Employers will be
-  required to establish transparent pay systems and provide employees with
-  access to information on average pay.
+  Draft Bill UC127 implements EU Directive 2023/970. Employers will be required
+  to establish transparent pay systems and provide employees with access to
+  information on average pay.
 ctaTitle: Prepare your organisation for change
 ctaText: >-
-  We can help you audit your remuneration policy and implement procedures
-  that comply with the new regulations before they become mandatory.
+  We can help you audit your remuneration policy and implement procedures that
+  comply with the new regulations before they become mandatory.
 ---
 ## What does the new draft legislation mean for employers and employees?
 
