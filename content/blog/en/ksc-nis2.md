@@ -1,16 +1,15 @@
 ---
 title: Entry into force of the new regulations on the KSC
-date: 2026-11-05
+date: 2026-07-05
 category: Cybersecurity
 excerpt: >-
   The Act transposing the NIS2 Directive comes into force on 3 April 2026. A
-  significantly wider range of entities must register with the KSC Register
-  and implement an information security management system.
+  significantly wider range of entities must register with the KSC Register and
+  implement an information security management system.
 ctaTitle: Check your status under KSC
 ctaText: >-
   We can help you assess whether your organisation is a key or significant
-  entity, carry out a gap analysis, and implement the necessary
-  documentation.
+  entity, carry out a gap analysis, and implement the necessary documentation.
 ---
 The new regulations on the National Cybersecurity System pose a significant challenge for businesses designated as important or critical entities. What is the timetable for the new obligations coming into force?
 
