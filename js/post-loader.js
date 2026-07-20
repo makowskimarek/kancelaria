@@ -7,13 +7,13 @@
   function loadPost(lang) {
     var primaryPath = lang === 'en'
       ? '../content/blog/en/' + slug + '.md'
-      : '../content/blog/' + slug + '.md';
+      : '../content/blog/pl/' + slug + '.md';
 
     fetch(primaryPath)
       .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
       .catch(function () {
         if (lang === 'en') {
-          return fetch('../content/blog/' + slug + '.md')
+          return fetch('../content/blog/pl/' + slug + '.md')
             .then(function (r) { return r.ok ? r.text() : Promise.reject(new Error('404')); });
         }
         return Promise.reject(new Error('404'));

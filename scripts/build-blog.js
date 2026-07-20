@@ -5,7 +5,8 @@ const matter = require('gray-matter')
 const { marked } = require('marked')
 
 const ROOT = path.join(__dirname, '..')
-const CONTENT_DIR = path.join(ROOT, 'content', 'blog')
+const CONTENT_DIR_PL = path.join(ROOT, 'content', 'blog', 'pl')
+const CONTENT_DIR_EN = path.join(ROOT, 'content', 'blog', 'en')
 function extract(html, startMarker, endMarker) {
   const start = html.indexOf(startMarker)
   const end = html.indexOf(endMarker)
@@ -19,13 +20,13 @@ function formatDate(dateStr) {
   })
 }
 
-function getAllPosts() {
-  if (!fs.existsSync(CONTENT_DIR)) return []
-  return fs.readdirSync(CONTENT_DIR)
+function getAllPosts(contentDir) {
+  if (!fs.existsSync(contentDir)) return []
+  return fs.readdirSync(contentDir)
     .filter(f => f.endsWith('.md') || f.endsWith('.mdoc'))
     .map(file => {
       const slug = file.replace(/\.(mdoc|md)$/, '')
-      const raw = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8')
+      const raw = fs.readFileSync(path.join(contentDir, file), 'utf-8')
       const { data, content } = matter(raw)
       return {
         slug,
@@ -98,15 +99,20 @@ function main() {
   const footer = extract(indexHtml, '<!-- BLOG_FOOTER_START -->', '<!-- BLOG_FOOTER_END -->')
     .replace(/href="#/g, 'href="index.html#')
 
-  const posts = getAllPosts()
-  console.log(`Znaleziono ${posts.length} wpisów`)
+  const postsPl = getAllPosts(CONTENT_DIR_PL)
+  const postsEn = getAllPosts(CONTENT_DIR_EN)
+  console.log(`Znaleziono ${postsPl.length} wpisów PL, ${postsEn.length} wpisów EN`)
 
   fs.writeFileSync(path.join(ROOT, 'blog.html'), buildBlogList(navbar, footer), 'utf-8')
   console.log('Wygenerowano blog.html')
 
-  const postsJson = posts.map(({ slug, title, date, category, excerpt }) => ({ slug, title, date, category, excerpt }))
-  fs.writeFileSync(path.join(ROOT, 'content', 'blog', 'posts.json'), JSON.stringify(postsJson, null, 2) + '\n', 'utf-8')
-  console.log('Wygenerowano posts.json')
+  const toPostsJson = posts => posts.map(({ slug, title, date, category, excerpt }) => ({ slug, title, date, category, excerpt }))
+
+  fs.writeFileSync(path.join(ROOT, 'content', 'blog', 'posts.json'), JSON.stringify(toPostsJson(postsPl), null, 2) + '\n', 'utf-8')
+  console.log('Wygenerowano content/blog/posts.json')
+
+  fs.writeFileSync(path.join(ROOT, 'content', 'blog', 'en', 'posts.json'), JSON.stringify(toPostsJson(postsEn), null, 2) + '\n', 'utf-8')
+  console.log('Wygenerowano content/blog/en/posts.json')
 
   console.log('Build zakończony.')
 }
