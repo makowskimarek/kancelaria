@@ -1,8 +1,6 @@
 ---
-title: >-
-  How do you elect employee representatives in a company without a trade
-  union?
-date: 2026-11-05
+title: How do you elect employee representatives in a company without a trade union?
+date: 2026-07-05
 category: Employment law
 excerpt: >-
   The draft bill on pay transparency requires consultation with employee
@@ -10,9 +8,8 @@ excerpt: >-
   explain how to carry out this process safely.
 ctaTitle: Do you need election rules?
 ctaText: >-
-  We will draw up procedures and documentation tailored to your
-  organisation’s structure before the first statutory obligations come into
-  force.
+  We will draw up procedures and documentation tailored to your organisation’s
+  structure before the first statutory obligations come into force.
 ---
 The proposed provisions of the Salary Transparency Bill provide for consultation between employers and workplace trade unions. But what if a large employer does not have such organisations?
 
