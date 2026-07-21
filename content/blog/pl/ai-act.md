@@ -1,5 +1,5 @@
 ---
-title: Nowe obowiązki związane na styku nowych technologii i prawa żywnościowego
+title: Nowe obowiązki na styku nowych technologii i prawa żywnościowego
 date: 2026-07-16
 category: Prawo żywnościowe
 excerpt: >-
