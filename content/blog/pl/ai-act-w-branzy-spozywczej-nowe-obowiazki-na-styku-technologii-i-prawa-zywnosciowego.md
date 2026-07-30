@@ -1,21 +1,22 @@
 ---
 title: >-
-  AI Act w branży spożywczej - nowe obowiązki na styku sztucznej inteligencji i
-  prawa żywnościowego
+  AI Act w branży spożywczej - nowe obowiązki na styku technologii i prawa
+  żywnościowego
 date: 2026-07-16
 category: Prawo żywnościowe
 excerpt: >-
-  Rozporządzenie 2024/1689, czyli AI Act, wprowadza unijne ramy korzystania ze
-  sztucznej inteligencji. Dla branży żywnościowej oznacza konieczność
-  weryfikacji, gdzie systemy AI wpływają na bezpieczeństwo produktu, kontrolę
-  jakości, traceability, etykietowanie, reklamę lub komunikację z konsumentem.
-ctaTitle: Poznaj nowe obowiązki związane z wykorzystywaniem AI
+  AI Act, czyli rozporządzenie 2024/1689, nie dotyczy wyłącznie firm
+  technologicznych. W branży spożywczej może mieć znaczenie wszędzie tam, gdzie
+  sztuczna inteligencja wspiera kontrolę jakości, traceability, etykietowanie,
+  reklamę, obsługę reklamacji lub komunikację z konsumentem.
+ctaTitle: Korzystasz z AI w branży spożywczej? Sprawdź ryzyka prawne
 ctaText: >-
-  Wspieramy prawidłowe wdrożenie wykorzystania AI w codziennym funkcjonowaniu
-  Twojego przedsiębiorstwa.
+  Wdrożenie AI Act w firmie spożywczej nie powinno być wyłącznie projektem IT.
+  Pomagamy ocenić, gdzie systemy AI wpływają na bezpieczeństwo produktu,
+  oznakowanie, reklamę, dokumentację jakościową i relacje z konsumentami.
+  Weryfikujemy procedury, umowy z dostawcami technologii oraz zasady nadzoru nad
+  AI z perspektywy prawa żywnościowego i compliance.
 ---
-# AI Act w branży spożywczej - nowe obowiązki na styku sztucznej inteligencji i prawa żywnościowego
-
 Rozporządzenie 2024/1689, czyli AI Act, wprowadza unijne ramy korzystania ze sztucznej inteligencji. Dla branży żywnościowej oznacza konieczność weryfikacji, gdzie systemy AI wpływają na bezpieczeństwo produktu, kontrolę jakości, traceability, etykietowanie, reklamę lub komunikację z konsumentem.
 
 ## AI Act nie jest tylko regulacją dla firm technologicznych
