@@ -1,18 +1,16 @@
 ---
-title: >-
-  New FAQs explaining the regulations – PPWR in the final stages
+title: New FAQs explaining the regulations – PPWR in the final stages
 date: 2026-08-11
 category: Food law
 excerpt: >-
-  The second edition of the European Commission’s FAQs on the PPWR Regulation
-  – Regulation (EU) 2025/40 on packaging and packaging waste – has been
-  published on the website of the Publications Office of the European Union.
-  The publication was made available on 31 July 2026, and the general date of
+  The second edition of the European Commission’s FAQs on the PPWR Regulation –
+  Regulation (EU) 2025/40 on packaging and packaging waste – has been published
+  on the website of the Publications Office of the European Union. The
+  publication was made available on 31 July 2026, and the general date of
   application of the PPWR is 12 August 2026. To put it simply: The Commission
   has provided businesses with a user guide for one of the most significant
-  pieces of legislation in recent years, at a time when many companies have
-  less time to implement it than it would take to calmly order new business
-  cards.
+  pieces of legislation in recent years, at a time when many companies have less
+  time to implement it than it would take to calmly order new business cards.
 ctaTitle: Don’t wait for PPWR to ask first
 ctaText: >-
   The Commission’s new FAQ shows that implementing the PPWR requires not only
@@ -20,8 +18,7 @@ ctaText: >-
   documentation, suppliers, declarations of conformity and roles within the
   supply chain. We help businesses assess which obligations apply to their
   packaging, how to prepare the necessary documents, and how to minimise
-  regulatory risk ahead of an inspection or an enquiry from a business
-  partner.
+  regulatory risk ahead of an inspection or an enquiry from a business partner.
 ---
 ## FAQ, or ‘please don’t worry, we’re still working out the details’
 
