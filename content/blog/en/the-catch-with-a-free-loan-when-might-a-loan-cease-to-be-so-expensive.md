@@ -1,27 +1,24 @@
 ---
-title: >-
-  The catch with a ‘free’ loan – when might a loan cease to be so
-  ‘expensive’?
+title: The catch with a ‘free’ loan – when might a loan cease to be so ‘expensive’?
 date: 2026-08-27
 category: Civil law
 excerpt: >-
-  Current case law of the CJEU strengthens the position of consumers in
-  disputes concerning penalties relating to ‘free’ loans. Cases concerning
-  costs charged as part of the loan, commissions, insurance, the APR and
-  non-transparent information about the loan are of particular significance.
-  The ‘no-charge loan’ rule does not apply automatically, but in many
-  contracts it can pave the way for a genuine reduction in loan costs or the
-  recovery of unduly charged fees.
+  Current case law of the CJEU strengthens the position of consumers in disputes
+  concerning penalties relating to ‘free’ loans. Cases concerning costs charged
+  as part of the loan, commissions, insurance, the APR and non-transparent
+  information about the loan are of particular significance. The ‘no-charge
+  loan’ rule does not apply automatically, but in many contracts it can pave the
+  way for a genuine reduction in loan costs or the recovery of unduly charged
+  fees.
 ctaTitle: >-
   Do you have a loan whose costs you’re unsure about? Check out SKD and other
   solutions
 ctaText: >-
   We specialise in cases relating to penalties on interest-free loans and
-  foreign-currency loans – not just those in Swiss francs. We analyse
-  contracts, verify fees, insurance, the APR, conversion mechanisms and other
-  loan costs. We help determine whether you are eligible for the SKD scheme,
-  claim a refund of unduly charged fees, or challenge flawed contractual
-  provisions.
+  foreign-currency loans – not just those in Swiss francs. We analyse contracts,
+  verify fees, insurance, the APR, conversion mechanisms and other loan costs.
+  We help determine whether you are eligible for the SKD scheme, claim a refund
+  of unduly charged fees, or challenge flawed contractual provisions.
 ---
 The ‘free loan sanction’, or SKD, was for years a concept known mainly to lawyers specialising in consumer credit. Today, it is increasingly coming to the attention of the courts, the media and in discussions between borrowers and banks – and for good reason. Current case law from the Court of Justice of the European Union (CJEU) and national courts shows that the way in which consumer credit agreements are drafted can have very serious consequences for lenders, perhaps even more so than the much-discussed issue of ‘franc-denominated’ agreements.
 
